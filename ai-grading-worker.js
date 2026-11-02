@@ -31,17 +31,19 @@ export default {
       body:JSON.stringify({
         systemInstruction:{parts:[{text:instruction}]},
         contents:[{role:'user',parts:[{text:JSON.stringify({questions})}]}],
-        generationConfig:{responseMimeType:'application/json',maxOutputTokens:4096,temperature:0.1}
+        generationConfig:{responseMimeType:'application/json',maxOutputTokens:8192,temperature:0.1,thinkingConfig:{thinkingBudget:0}}
       })
     });
     if(!response.ok){
       if(response.status===429)return respond({error:'Gemini free-tier quota exceeded; retry later.',status:429},429);
-      return respond({error:'Gemini API request failed; verify model and free-tier eligibility.',status:response.status},502);
+      const failure=await response.json().catch(()=>({}));
+      const msg=String(failure.error?.message||'Gemini rejected the request').slice(0,400);
+      return respond({error:'Gemini API request failed',providerStatus:response.status,detail:msg},502);
     }
     const result=await response.json();
     const responseText=(result.candidates||[]).flatMap(c=>(c.content?.parts||[])).map(p=>p.text||'').join('');
     let parsed;
-    try{parsed=JSON.parse(responseText)}catch{return respond({error:'Gemini response was not valid JSON'},502)}
+    try{parsed=JSON.parse(responseText)}catch{return respond({error:'Gemini response was not valid JSON',finishReason:result.candidates?.[0]?.finishReason||'unknown',outputCharacters:responseText.length},502)}
     if(!Array.isArray(parsed.grades))return respond({error:'Missing grading results'},502);
     const grades=questions.map(q=>{const g=parsed.grades.find(x=>Number(x.id)===q.id)||{};return{id:q.id,score:Math.min(q.points,Math.max(0,Number(g.score)||0)),feedback:String(g.feedback||'No evaluation returned'),improvement:String(g.improvement||'Please review the model answer')}});
     return respond({grades});
