@@ -1,0 +1,383 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ch5 Behavioral Modeling | SAD Midterm 2026</title><style>:root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color-scheme:dark;--bg:#101827;--card:#182338;--txt:#e6edf9;--muted:#a8b8d3;--border:#32425d;--accent:#83baff}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--txt);line-height:1.75}.wrap{max-width:1100px;margin:auto;padding:22px}.top{position:sticky;top:0;background:#111b2cf5;z-index:5;border-bottom:1px solid var(--border);padding:12px 0}.top .wrap{display:flex;justify-content:space-between;align-items:center;padding:0 20px;gap:10px;flex-wrap:wrap}.pill,a.btn,button{border:1px solid var(--border);border-radius:10px;padding:8px 12px;background:#233554;color:var(--txt);text-decoration:none;cursor:pointer}a{color:var(--accent)}h1{font-size:clamp(1.7rem,4vw,3rem);line-height:1.2}h2{margin-top:42px;color:#b4d6ff}h3{color:#9bd7ce}section,.card{padding:22px;margin:18px 0;background:var(--card);border-radius:16px;border:1px solid var(--border)}.muted{color:var(--muted)}table{border-collapse:collapse;width:100%;font-size:.95rem}td,th{padding:10px;border:1px solid var(--border);vertical-align:top;text-align:left}th{background:#233653}pre{overflow:auto;padding:16px;background:#0c1320;border-radius:10px}code{color:#aed9ff}details{margin:12px 0;border:1px solid var(--border);border-radius:10px;padding:14px}summary{cursor:pointer;font-weight:700}.mermaid{background:#f7fafc;border-radius:14px;padding:16px;overflow:auto;color:#111}nav.toc{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.quiz button{display:block;margin:8px 0;width:100%;text-align:left}.feedback{color:#a6f4ce;font-weight:600}.bad{color:#f9a8aa}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:650px){section,.card{padding:14px}.two{grid-template-columns:1fr}td,th{padding:6px;font-size:.84rem}}body.light{--bg:#f5f7fc;--card:white;--txt:#1c2c40;--muted:#51627a;--border:#c7d3e3;--accent:#135fb2;color-scheme:light}.light .top{background:#f4f8fff5}.light .pill,.light a.btn,.light button{background:#e3efff;color:#16345a}.light pre{background:#eaf1fb}.screenread{position:absolute;left:-10000px}</style></head><body><header class="top"><div class="wrap"><a class="btn" href="./index.html">← SPA 首頁</a><b>Chapter 5 · Behavioral Modeling</b><span><a class="btn" href="./chapter4.html">← Chapter 4</a> <button onclick="toggleTheme()">☼/☾</button></span></div></header><main class="wrap"><h1>Chapter 5. Behavioral Modeling</h1><p class="muted">English-first · 繁體中文詳解 · 2026 Course Slides · Six-Step Sequence SOP · CRUDE · Five-Step State SOP · V&V · Mermaid Diagrams · Full Cases</p><nav class="toc"><a class="pill" href="#part1">1. Framework</a><a class="pill" href="#part2">2. Interaction Diagrams</a><a class="pill" href="#part3">3. Sequence Syntax</a><a class="pill" href="#part4">4. 6-Step SOP</a><a class="pill" href="#part5">5. Borrow Books Case</a><a class="pill" href="#part6">6. CRUDE</a><a class="pill" href="#part7">7. State Machines</a><a class="pill" href="#part8">8. 5-Step State SOP</a><a class="pill" href="#part9">9. Clinic Case</a><a class="pill" href="#part10">10. Lecture Cases</a><a class="pill" href="#part11">11. V&V</a><a class="pill" href="#part12">12. Exam Prep</a></nav><section id="part1"><h2>1. Behavioral Modeling: Scope, Objectives and Artifact Relationships</h2>
+<p><b>Behavioral Modeling:</b> Dynamic modeling of how interacting objects collaborate to fulfill use cases and how an important business object changes state during its lifetime. The two main model families are <b>Interaction Diagrams</b> and <b>Behavioral State Machines</b>. The lecturer explicitly states Behavioral Modeling is iterative and can induce changes to functional and structural models (2026 lecture pp.4–8).</p>
+<p>中文：Functional Model 說明「使用者需要系統做什麼」，Structural Model 說明「有哪些物件及責任」，Behavioral Model 說明「物件以什麼訊息及順序合作」以及「重要物件何時轉換狀態」。它不是用來重新描寫靜態 Class 清單，也不是重新畫一次 Use Case。</p>
+<pre class="mermaid">flowchart TD
+ R["Requirements Definition"] --> F["Functional Models: UC, Activity, UCD"]
+ F --> S["Structural Models: CRC, Class Diagram"]
+ S --> B["Behavioral Modeling"]
+ B --> I["Interaction: Sequence / Communication"]
+ B --> SM["Object Lifecycle: State Machine"]
+ I --> CR["CRUDE Matrix"]
+ CR -. "revise responsibilities and collaborations" .-> S
+ SM -. "revise attributes, status, operations" .-> S
+ B -. "verify requirements and scenarios" .-> F</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>flowchart TD
+ R["Requirements Definition"] --> F["Functional Models: UC, Activity, UCD"]
+ F --> S["Structural Models: CRC, Class Diagram"]
+ S --> B["Behavioral Modeling"]
+ B --> I["Interaction: Sequence / Communication"]
+ B --> SM["Object Lifecycle: State Machine"]
+ I --> CR["CRUDE Matrix"]
+ CR -. "revise responsibilities and collaborations" .-> S
+ SM -. "revise attributes, status, operations" .-> S
+ B -. "verify requirements and scenarios" .-> F</code></pre></details>
+<div style="overflow:auto"><table><thead><tr><th>Artifact</th><th>Primary View</th><th>What must be answered?</th><th>Main Source</th></tr></thead><tbody><tr><td>Sequence Diagram</td><td>Dynamic interactions over time</td><td>In what order are messages sent?</td><td>Slides 8–32</td></tr><tr><td>Communication Diagram</td><td>Object/link collaboration</td><td>Which objects communicate, and what messages are passed?</td><td>Slides 7 and 48; textbook not provided</td></tr><tr><td>CRUDE Matrix</td><td>System-wide collaboration checks</td><td>Who creates, reads, updates, deletes, executes what?</td><td>Slides 33–35</td></tr><tr><td>Behavioral State Machine</td><td>Lifecycle of one business object</td><td>Which state changes occur after which events/guards?</td><td>Slides 36–41</td></tr><tr><td>Cross-model V&V</td><td>Consistency and completeness</td><td>Does each model match the UC, UCD and CD?</td><td>Slides 42, 46–48</td></tr></tbody></table></div>
+<h3>Glossary</h3><div style="overflow:auto"><table><thead><tr><th>English Term</th><th>Academic Meaning</th><th>中文重點</th></tr></thead><tbody><tr><td>Interaction</td><td>Object-to-object collaboration through requests/messages</td><td>物件互相呼叫實現功能</td></tr><tr><td>Lifeline</td><td>An individual participant over time</td><td>垂直虛線表示參與者的存在</td></tr><tr><td>Message</td><td>Communication / operation invocation between objects</td><td>可包含參數、回傳值</td></tr><tr><td>Execution Occurrence</td><td>Time an object performs a behavior</td><td>執行條（activation bar）</td></tr><tr><td>Synchronous Message</td><td>Caller typically awaits completion</td><td>同步呼叫</td></tr><tr><td>Asynchronous Message</td><td>Caller does not necessarily wait</td><td>非同步訊息</td></tr><tr><td>Return Message</td><td>Response/result of an invocation</td><td>通常虛線，可省略明顯回傳</td></tr><tr><td>Frame / Combined Fragment</td><td>Container for interaction, alternatives or loops</td><td>框架、alt、opt、loop</td></tr><tr><td>Instance Sequence Diagram</td><td>One concrete use-case scenario</td><td>本課程主要使用</td></tr><tr><td>Generic Sequence Diagram</td><td>Several possible scenarios or all relevant flows</td><td>一般化流程，與 instance 不同</td></tr><tr><td>State</td><td>Condition of an object during its lifetime</td><td>某個物件狀態</td></tr><tr><td>Event</td><td>Occurrence triggering potential change</td><td>觸發事件</td></tr><tr><td>Transition</td><td>Movement from source to target state</td><td>狀態轉移</td></tr><tr><td>Guard</td><td>Boolean condition constraining a transition</td><td>方括號條件</td></tr><tr><td>CRUDE</td><td>Create, Read, Update, Delete, Execute</td><td>跨物件操作矩陣</td></tr></tbody></table></div></section><section id="part2"><h2>2. Interaction Diagrams: Sequence vs Communication and Message Types</h2>
+<p>The 2026 slides identify two UML interaction diagrams: (1) <b>Sequence Diagram</b>, emphasizing timing/order, and (2) <b>Communication Diagram</b>, emphasizing the pattern of message flow between linked objects. Slide 7 explicitly says Communication Diagrams are <b>not included in the assigned textbook</b>; the comparison and illustrative notation below derive from the lecture plus standard UML explanation, not from missing textbook pages.</p>
+<div style="overflow:auto"><table><thead><tr><th>Dimension</th><th>Sequence Diagram</th><th>Communication Diagram</th></tr></thead><tbody><tr><td>Emphasis</td><td>Temporal ordering along the vertical axis</td><td>Object relationships / network of links</td></tr><tr><td>Layout</td><td>Actors/participants across top; time top → bottom</td><td>Objects arranged as nodes with links</td></tr><tr><td>Messages</td><td>Ordered by vertical location</td><td>Annotated and commonly numbered along links</td></tr><tr><td>Good for</td><td>Scenario walkthrough, operation order and return values</td><td>Identifying which objects must communicate</td></tr><tr><td>Limit</td><td>Long diagrams when many participants/messages</td><td>Temporal detail less immediately visible</td></tr></tbody></table></div>
+<h3>Message Fundamentals</h3><p>Slide 6 uses a Java-style Student–Course example: <code>Student.registerCourse(Course c)</code> invokes <code>c.add(stu_ID)</code>, then obtains a returned boolean. In this interaction, Student sends a <b>Call Message</b> and Course provides a <b>Return Message</b>. The sender's Class need not implement the receiver's operation: the receiver owns its behavior.</p>
+<pre><code>public class Student {
+  private String stu_ID;
+  public String registerCourse(Course c) {
+    boolean accepted = c.add(stu_ID);
+    return accepted ? "accepted" : "rejected";
+  }
+}</code></pre>
+<pre class="mermaid">sequenceDiagram
+ participant Student
+ participant Course
+ Student->>Course: add(stu_ID)
+ activate Course
+ Course-->>Student: accepted: boolean
+ deactivate Course</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>sequenceDiagram
+ participant Student
+ participant Course
+ Student->>Course: add(stu_ID)
+ activate Course
+ Course-->>Student: accepted: boolean
+ deactivate Course</code></pre></details>
+<p><b>Semantic rules:</b> A solid arrow indicates the call; a dashed arrow illustrates a return. A synchronous call generally uses a filled arrowhead and an asynchronous signal a stick arrowhead in formal UML. Mermaid reproduces these concepts approximately. An obvious return may be omitted, as the lecture says in Step 4 (p.19).</p>
+<h3>Communication Diagram Conceptual Example</h3><pre class="mermaid">flowchart LR
+ S["student: Student"] -- "1: registerCourse()" --> M["registrationManager: Control"]
+ M -- "1.1: add(studentId)" --> C["course: Course"]
+ C -- "1.2: result" --> M</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>flowchart LR
+ S["student: Student"] -- "1: registerCourse()" --> M["registrationManager: Control"]
+ M -- "1.1: add(studentId)" --> C["course: Course"]
+ C -- "1.2: result" --> M</code></pre></details>
+<p><b>Formal notation caution:</b> Mermaid flowchart with numbered connectors is a teaching approximation. When drawing a graded UML Communication Diagram, represent objects, links, appropriately directed messages and sequence numbers in the UML style specified in class.</p></section><section id="part3"><h2>3. Sequence Diagram: Standard UML Syntax and Detailed Reading</h2>
+<div style="overflow:auto"><table><thead><tr><th>Element / Symbol</th><th>UML Meaning</th><th>Drawing / Interpretation Rule</th></tr></thead><tbody><tr><td>Actor</td><td>External user/system participant</td><td>May be represented with a stick figure; outside subject conceptually</td></tr><tr><td>Object Lifeline</td><td>Instance participant such as <code>patient: Patient</code></td><td>Label instance : Class; dashed vertical lifeline</td></tr><tr><td>Boundary / Control / Entity</td><td>Analysis stereotypes</td><td>UI ↔ orchestration ↔ persistent business objects</td></tr><tr><td>Solid Call Arrow</td><td>Message or method invocation</td><td>Sender → receiver; include operation name(arguments)</td></tr><tr><td>Dashed Return Arrow</td><td>Response/result</td><td>Receiver → caller, may be omitted if obvious</td></tr><tr><td>Execution Occurrence</td><td>Execution bar on lifeline</td><td>Time during which called behavior executes</td></tr><tr><td>Self Message</td><td>An object invokes its own operation</td><td>Loops back to same lifeline</td></tr><tr><td>Create / Destroy</td><td>Beginning/end of an object's existence</td><td>Creation message to new lifeline; destruction indicated if applicable</td></tr><tr><td>Frame / Combined Fragment</td><td>Region enclosing alt, opt, loop</td><td>Guards such as [available] and [else]</td></tr><tr><td>Nested Message</td><td>Receiver invokes another object</td><td>Vertical order preserves execution logic</td></tr></tbody></table></div>
+<h3>Instance vs Generic</h3><p><b>Generic Sequence Diagram:</b> Can account for several paths of a Use Case, often by using alt/opt/loop fragments. <b>Instance Sequence Diagram:</b> Specifies one scenario (a single path through a Use Case). <b>The lecturer explicitly says this course uses instance sequence diagrams</b> (slide 8). Therefore when assigned “draw SD for Borrow Books normal flow,” focus on that selected normal scenario rather than automatically creating a giant diagram for every branch.</p>
+<h3>Frames: alt / opt / loop</h3><pre class="mermaid">sequenceDiagram
+ actor Patient
+ participant BookingUI
+ participant BookingManager
+ participant Appointment
+ Patient->>BookingUI: requestAppointment(doctor, slot)
+ BookingUI->>BookingManager: book(doctor, slot)
+ alt slot available
+   BookingManager->>Appointment: create(patient, doctor, slot)
+   Appointment-->>BookingManager: appointmentId
+   BookingManager-->>BookingUI: confirmed(appointmentId)
+ else slot unavailable
+   BookingManager-->>BookingUI: rejected()
+ end
+ BookingUI-->>Patient: displayResult()</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>sequenceDiagram
+ actor Patient
+ participant BookingUI
+ participant BookingManager
+ participant Appointment
+ Patient->>BookingUI: requestAppointment(doctor, slot)
+ BookingUI->>BookingManager: book(doctor, slot)
+ alt slot available
+   BookingManager->>Appointment: create(patient, doctor, slot)
+   Appointment-->>BookingManager: appointmentId
+   BookingManager-->>BookingUI: confirmed(appointmentId)
+ else slot unavailable
+   BookingManager-->>BookingUI: rejected()
+ end
+ BookingUI-->>Patient: displayResult()</code></pre></details>
+<p>課堂的 Instance Sequence Diagram 一般只需要抽出其中一條具體 scenario。例如「slot available」的正常流程可獨立畫一張；上面 alt 版用於教學比較 Generic 與 Instance 的視野。</p>
+<h3>Execution vs Return</h3><p>An Execution Occurrence is not the same as a Lifeline. The Lifeline persists as the participant exists, while the Execution Occurrence marks active execution. Returning a value is different from sending another business request. The lecture's example on slides 10–11 uses the execution bar specifically for this distinction.</p></section><section id="part4"><h2>4. The Lecturer's Six-Step Sequence Diagram SOP</h2>
+<p><b>Official 2026 slide 19 SOP:</b> (1) Set the context; (2) Identify actors and objects interacting in the UC scenario; (3) Set the lifeline for each object; (4) Add messages; (5) Add execution occurrence; (6) Validate the sequence diagram. The lecture's associated slide 20 expands Step 1 into four checks.</p>
+<div style="overflow:auto"><table><thead><tr><th>Step</th><th>What the Slides Require</th><th>Detailed Construction SOP</th><th>Pitfall</th></tr></thead><tbody><tr><td>1. Set the Context</td><td>Select UC; focus normal flow; clarify Swimlane AD; obtain UC-level CD</td><td>Select exactly one Use Case, choose its major Normal UCD Flow, map actions to actor/class responsibility lanes, retrieve candidate classes and associations.</td><td>Trying to show unrelated use cases</td></tr><tr><td>2. Identify Actors & Objects</td><td>Identify participating actors and objects for that scenario</td><td>Extract participants from UCD step subjects/receivers and the UC-level CD, including needed Boundary/Control/Entity objects.</td><td>Turning every noun into an object lifeline</td></tr><tr><td>3. Set Lifelines</td><td>Arrange one lifeline per relevant instance</td><td>Use <code>instanceName: ClassName</code>, meaningful left-right order and dashed lifeline; actor may appear first.</td><td>Confusing Class name and instance identity</td></tr><tr><td>4. Add Messages</td><td>Draw arrows, include parameters, omit obvious returns</td><td>Walk top-to-bottom through UCD events; assign each operation to receiver class and include meaningful parameters/results.</td><td>Wrong receiver, direction or order</td></tr><tr><td>5. Add Execution Occurrences</td><td>Mark execution of called operations</td><td>Show appropriate activation bars, nesting and return where relevant.</td><td>Activation bar mistakenly covering entire scenario</td></tr><tr><td>6. Validate Diagram</td><td>Ensure every selected process step is represented</td><td>Walkthrough alongside UCD / Activity / CD; correct any missing objects, operations, associations and inconsistent paths.</td><td>Assuming a syntactically correct diagram is business-correct</td></tr></tbody></table></div>
+<h3>Step 1: Context Preparation (slide 20)</h3><ol><li>Select a <b>Use Case</b>.</li><li>Choose the <b>major Normal Flow</b> from its <b>Use-Case Description</b>.</li><li>Use its <b>Activity Diagram</b>; create/refine a <b>Swimlane Activity Diagram</b> to assign activities to actors and classes.</li><li>Prepare its <b>UC-level Class Diagram</b> from Structural Modeling.</li></ol>
+<h3>Text → Lifelines → Messages</h3>
+<div style="overflow:auto"><table><thead><tr><th>UCD Normal Step</th><th>Responsible Participant</th><th>Corresponding Message</th></tr></thead><tbody><tr><td>Patient selects doctor and time</td><td>Patient → BookingUI</td><td>requestAppointment(doctor,slot)</td></tr><tr><td>System verifies schedule</td><td>BookingUI → BookingManager → Availability</td><td>book(); isAvailable(slot)</td></tr><tr><td>System creates Appointment</td><td>BookingManager → Appointment</td><td>create(patient,doctor,slot)</td></tr><tr><td>System reports confirmation</td><td>BookingManager → BookingUI → Patient</td><td>confirmed(id); displayResult()</td></tr></tbody></table></div>
+<pre class="mermaid">sequenceDiagram
+ actor Patient
+ participant UI as bookingUI: BookingUI
+ participant Manager as bookingManager: BookingManager
+ participant Avail as availability: Availability
+ participant Appt as appointment: Appointment
+ Patient->>UI: requestAppointment(doctor,slot)
+ activate UI
+ UI->>Manager: book(patient,doctor,slot)
+ activate Manager
+ Manager->>Avail: isAvailable(slot)
+ Avail-->>Manager: true
+ Manager->>Appt: create(patient,doctor,slot)
+ Appt-->>Manager: appointmentId
+ Manager-->>UI: confirmed(appointmentId)
+ deactivate Manager
+ UI-->>Patient: displayConfirmation()
+ deactivate UI</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>sequenceDiagram
+ actor Patient
+ participant UI as bookingUI: BookingUI
+ participant Manager as bookingManager: BookingManager
+ participant Avail as availability: Availability
+ participant Appt as appointment: Appointment
+ Patient->>UI: requestAppointment(doctor,slot)
+ activate UI
+ UI->>Manager: book(patient,doctor,slot)
+ activate Manager
+ Manager->>Avail: isAvailable(slot)
+ Avail-->>Manager: true
+ Manager->>Appt: create(patient,doctor,slot)
+ Appt-->>Manager: appointmentId
+ Manager-->>UI: confirmed(appointmentId)
+ deactivate Manager
+ UI-->>Patient: displayConfirmation()
+ deactivate UI</code></pre></details>
+<p><b>Source boundary:</b> This clinic scenario is an original worked example based on the course concepts. Slides 23–32 instead use the official Library Book Collection / Borrow Books worked sequence; those materials are analyzed separately in this chapter.</p></section><section id="part5"><h2>5. Official Borrow Books Example: Sequence Diagram Drives Class Refinement</h2>
+<p><b>Lecture pp.23–32</b> walks from the <b>Library Book Collection Management System</b> and the Borrow Books UCD through candidate classes, a UC-level Class Diagram, Sequence Diagram, discussion of new business information and a revised Class Diagram. This is particularly important: behavioral modeling can reveal structural gaps.</p>
+<h3>Derivation</h3><ol><li><b>Identify the Borrow Books Normal Flow:</b> a borrower requests a book, the system checks required conditions, records checkout, and responds.</li><li><b>Inspect Candidate Classes:</b> Student, Librarian, Book, Book Collection and other concepts shown in the case; determine which are domain entities, actors, boundaries or controls.</li><li><b>Prepare UC-Level Class Diagram:</b> confirm classes' responsibilities and associations before building the Sequence Diagram.</li><li><b>Build Sequence Diagram:</b> allocate each UCD event to interacting instances.</li><li><b>Ask Design Questions:</b> who is the user of the future online system, which object becomes an interface, and where is checkout information stored?</li><li><b>Revise Class Diagram:</b> introduce or revise a checkout transaction representation where the scenario requires it; reflect corresponding operations and associations.</li></ol>
+<p>The available slides show diagrams partly as images and contain blanks; the next two diagrams illustrate the reasoning, <b>not a verbatim reproduction of slide figures 6-15 or 6-19</b>.</p>
+<pre class="mermaid">sequenceDiagram
+ actor Borrower
+ participant UI as BorrowingUI
+ participant C as BorrowingController
+ participant Catalog as BookCollection
+ participant Book
+ participant Loan
+ Borrower->>UI: requestBorrow(bookId)
+ UI->>C: borrow(bookId,borrowerId)
+ C->>Catalog: findBook(bookId)
+ Catalog-->>C: Book
+ C->>Book: isAvailable()
+ Book-->>C: true
+ C->>Loan: recordCheckout(bookId,borrowerId)
+ Loan-->>C: loanId
+ C-->>UI: approved(loanId)
+ UI-->>Borrower: displayReceipt()</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>sequenceDiagram
+ actor Borrower
+ participant UI as BorrowingUI
+ participant C as BorrowingController
+ participant Catalog as BookCollection
+ participant Book
+ participant Loan
+ Borrower->>UI: requestBorrow(bookId)
+ UI->>C: borrow(bookId,borrowerId)
+ C->>Catalog: findBook(bookId)
+ Catalog-->>C: Book
+ C->>Book: isAvailable()
+ Book-->>C: true
+ C->>Loan: recordCheckout(bookId,borrowerId)
+ Loan-->>C: loanId
+ C-->>UI: approved(loanId)
+ UI-->>Borrower: displayReceipt()</code></pre></details>
+<pre class="mermaid">classDiagram
+ class Borrower {
+ -borrowerId: String
+ }
+ class Book {
+ -bookId: String
+ -available: boolean
+ +isAvailable(): boolean
+ }
+ class Loan {
+ -loanId: String
+ -checkoutDate: Date
+ -dueDate: Date
+ +recordCheckout()
+ }
+ class BookCollection {
+ +findBook(bookId): Book
+ }
+ Borrower "1" -- "0..*" Loan : borrows
+ Book "1" -- "0..*" Loan : checkout_history
+ BookCollection "1" o-- "0..*" Book : holds</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>classDiagram
+ class Borrower {
+ -borrowerId: String
+ }
+ class Book {
+ -bookId: String
+ -available: boolean
+ +isAvailable(): boolean
+ }
+ class Loan {
+ -loanId: String
+ -checkoutDate: Date
+ -dueDate: Date
+ +recordCheckout()
+ }
+ class BookCollection {
+ +findBook(bookId): Book
+ }
+ Borrower "1" -- "0..*" Loan : borrows
+ Book "1" -- "0..*" Loan : checkout_history
+ BookCollection "1" o-- "0..*" Book : holds</code></pre></details>
+<p><b>Exam insight:</b> A new message such as <code>recordCheckout()</code> may imply missing state/transaction information in the Class Diagram. Sequence Diagram → Class Diagram is therefore a <b>bidirectional correction loop</b>.</p>
+<h3>From Sequence Diagram to Pseudocode (slides 17–18)</h3><pre><code>Course course = new Course();
+Student student = new Student();
+boolean accepted = course.add(student.getId());
+// Caller Student uses Course's add() responsibility.</code></pre>
+<p>Program order should reflect the message chronology. This is a conceptual demonstration of how the same interaction may later become method calls; UML modeling does not require actual Java code in Analysis.</p></section><section id="part6"><h2>6. CRUDE Analysis: Five Operations and System-Wide Collaboration Matrix</h2>
+<p><b>CRUDE = Create, Read, Update, Delete, Execute.</b> Slide 33 explicitly defines these five labels and says a Matrix helps identify or verify object collaborations. Its strength is a <b>system-wide interaction overview</b>, complementing scenario-specific Sequence Diagrams.</p>
+<div style="overflow:auto"><table><thead><tr><th>Letter</th><th>Operation</th><th>Question for one actor/object versus another</th><th>Example</th></tr></thead><tbody><tr><td>C</td><td>Create</td><td>Can this actor/object create a target instance?</td><td>Staff creates Parcel entry</td></tr><tr><td>R</td><td>Read</td><td>Can it read the target's attributes?</td><td>Resident reads Parcel status</td></tr><tr><td>U</td><td>Update</td><td>Can it change target values?</td><td>Staff updates collected status</td></tr><tr><td>D</td><td>Delete</td><td>Can it delete a target instance?</td><td>Authorized staff deletes erroneous entry</td></tr><tr><td>E</td><td>Execute</td><td>Can it invoke a target object's operations?</td><td>BookingController invokes Appointment.confirm()</td></tr></tbody></table></div>
+<h3>Illustrative CRUDE Matrix: Parcel Collection</h3>
+<div style="overflow:auto"><table><thead><tr><th>Initiator / Target</th><th>Resident</th><th>Parcel</th><th>CollectionRecord</th><th>Staff</th></tr></thead><tbody><tr><td>Resident (Actor)</td><td>—</td><td>R</td><td>R</td><td>—</td></tr><tr><td>Staff (Actor)</td><td>R</td><td>R, U</td><td>C, R</td><td>—</td></tr><tr><td>ParcelManager (Control)</td><td>R</td><td>R, U, E</td><td>C, R, E</td><td>—</td></tr><tr><td>Parcel (Entity)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr></tbody></table></div>
+<p><b>How to read a matrix:</b> Row = initiating actor/class; Column = target class; entry = permitted/required interaction. A blank indicates no modeled collaboration in this scope, not necessarily that the class can never participate in another Use Case.</p>
+<h3>Procedure</h3><ol><li>Collect the relevant actors/classes from Use Cases and UC-level CD.</li><li>Review Sequence Diagram messages and responsibilities.</li><li>Identify which targets each initiator Creates, Reads, Updates, Deletes or Executes.</li><li>Populate the matrix with C / R / U / D / E, using multiple labels where appropriate.</li><li>Find unexpected blanks, unsupported associations or classes without meaningful collaboration.</li><li>Revisit Functional, Structural and Behavioral Models as needed.</li></ol>
+<p><b>Official cases:</b> Slide 34 uses <b>Campus Housing System</b> with Apartment Owner, Student, Staff and Apartment. Slide 35 uses the <b>Library Book Collection Management System</b> for a system-wide CRUDE Matrix and asks which classes appear to have no collaboration. The student image is partially not text-extractable, so the Parcel matrix here is an explicitly illustrative replacement rather than claimed exact numerical/transcription content.</p>
+<p><b>Exam trap:</b> A class with no links in a particular matrix is a candidate for investigation, not automatic deletion. Determine whether another UC requires the class.</p></section><section id="part7"><h2>7. Behavioral State Machines: Syntax, State/Events/Guard and Black Holes</h2>
+<p><b>Behavioral State Machine:</b> A dynamic model of the state changes of a focal object in response to events throughout its lifecycle. The diagram models <b>one important business object's states</b>, not the order of all participants' messages. Focus on Classes with meaningful status-dependent behavior (slides 36–38).</p>
+<div style="overflow:auto"><table><thead><tr><th>Symbol</th><th>Meaning</th><th>Exam Rule</th></tr></thead><tbody><tr><td>Initial State</td><td>Start of the object's modeled lifecycle</td><td>Filled black circle</td></tr><tr><td>Stable State</td><td>An object condition represented by attribute values</td><td>Rounded rectangle, e.g. Confirmed</td></tr><tr><td>Transition</td><td>Directed change between states</td><td>Arrow points to destination</td></tr><tr><td>Event / Trigger</td><td>Occurrence that enables a transition</td><td>Label e.g. confirmAppointment</td></tr><tr><td>Guard [condition]</td><td>Boolean constraint checked before transition</td><td>Square bracket guard must be satisfiable</td></tr><tr><td>Effect / Action</td><td>Behavior performed on transition</td><td>May use event [guard] / action</td></tr><tr><td>Final State</td><td>Termination of the modeled object lifecycle</td><td>Bullseye-style final</td></tr><tr><td>Self-transition</td><td>An event handled without changing the named state</td><td>Source and target same state</td></tr></tbody></table></div>
+<h3>Formal Transition Label</h3><pre><code>event(parameters) [guard] / action</code></pre>
+<p>Examples: <code>reserve() [slotAvailable] / markReserved()</code>; <code>cancel() [beforeDeadline] / releaseSlot()</code>. The exact guard depends on actual business rules, not intuition.</p>
+<h3>State Machine vs Activity Diagram</h3><div style="overflow:auto"><table><thead><tr><th>Contrast</th><th>Behavioral State Machine</th><th>Activity Diagram</th></tr></thead><tbody><tr><td>Focus</td><td>Lifecycle of one object</td><td>Workflow across tasks/roles</td></tr><tr><td>Nodes represent</td><td>States</td><td>Actions / Activities</td></tr><tr><td>Edges represent</td><td>Event-triggered state transitions</td><td>Control/Object flows</td></tr><tr><td>Guards</td><td>Conditions on state transitions</td><td>Conditions on decisions / flows</td></tr><tr><td>Example</td><td>Requested → Confirmed → Cancelled</td><td>Select → Check → Confirm</td></tr><tr><td>Main question</td><td>What is the object now?</td><td>What step happens next?</td></tr></tbody></table></div>
+<h3>Black Hole and Dead-End States</h3><p>Lecture p.40 asks which state creates a <b>Black Hole</b> in a car-rental membership machine. The phrase describes a state into which the model can transition but from which no valid outgoing transition can be taken under the stated rules when one should exist. This may indicate missing events, misunderstood lifecycle conditions or an intentionally terminal state. Distinguish an erroneous black hole from a correctly modeled Final State.</p>
+<h3>Formal Example: Appointment Lifecycle</h3><pre class="mermaid">stateDiagram-v2
+ [*] --> Requested : submit()
+ Requested --> Confirmed : accept() [slotAvailable]
+ Requested --> Rejected : reject() [slotUnavailable]
+ Confirmed --> Rescheduled : reschedule() [allowed]
+ Rescheduled --> Confirmed : reconfirm()
+ Confirmed --> Cancelled : cancel() [beforeDeadline]
+ Confirmed --> Completed : visitFinished()
+ Rejected --> [*]
+ Cancelled --> [*]
+ Completed --> [*]</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>stateDiagram-v2
+ [*] --> Requested : submit()
+ Requested --> Confirmed : accept() [slotAvailable]
+ Requested --> Rejected : reject() [slotUnavailable]
+ Confirmed --> Rescheduled : reschedule() [allowed]
+ Rescheduled --> Confirmed : reconfirm()
+ Confirmed --> Cancelled : cancel() [beforeDeadline]
+ Confirmed --> Completed : visitFinished()
+ Rejected --> [*]
+ Cancelled --> [*]
+ Completed --> [*]</code></pre></details>
+<p>Notice: A status such as <b>Cancelled</b> describes an Appointment, while <b>Cancel Appointment</b> is a Use Case. A Use Case name must not be used as if it were a state without semantic reasoning.</p></section><section id="part8"><h2>8. State Machine Construction: Five-Step SOP + Lecturer's Car-Rental Case</h2>
+<p><b>Official five-step SOP, slide 41:</b></p>
+<ol><li><b>Set the Context:</b> Prepare relevant artifacts and select one Class from Class Diagram whose lifecycle requires modeling. The student slide leaves the exact preparatory artifact in a blank; use the validated Functional/Structural material as evidence.</li><li><b>Identify States:</b> Include Initial State, meaningful Stable States and appropriate Final State(s).</li><li><b>Lay Out the Diagram:</b> Prefer readable left-to-right and top-down lifecycle order.</li><li><b>Add Transitions:</b> Identify triggering Events, executed Actions and Guards.</li><li><b>Validate the Model:</b> Ensure required states are reachable and important business transitions are covered.</li></ol>
+<h3>Official Car-Rental Membership Exercise (slide 40)</h3>
+<p>Scenario: Customers deposit NT$10,000 to become Regular Members. On the second rental a Regular Member becomes Silver. After five rentals a Silver Member becomes Gold. Gold returns to Silver after six months without rentals. A member who damages a car becomes Frozen, cannot rent for six months and then returns to Regular. A Regular Member without any rentals for over three years loses membership and must apply again.</p>
+<pre class="mermaid">stateDiagram-v2
+ [*] --> Regular : registerAndDeposit(10000)
+ Regular --> Silver : secondRental()
+ Silver --> Gold : fiveRentalsCompleted()
+ Gold --> Silver : inactiveForSixMonths()
+ Regular --> Frozen : carDamaged()
+ Silver --> Frozen : carDamaged()
+ Gold --> Frozen : carDamaged()
+ Frozen --> Regular : sixMonthsElapsed()
+ Regular --> Expired : inactiveForThreeYears()
+ Expired --> [*]</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>stateDiagram-v2
+ [*] --> Regular : registerAndDeposit(10000)
+ Regular --> Silver : secondRental()
+ Silver --> Gold : fiveRentalsCompleted()
+ Gold --> Silver : inactiveForSixMonths()
+ Regular --> Frozen : carDamaged()
+ Silver --> Frozen : carDamaged()
+ Gold --> Frozen : carDamaged()
+ Frozen --> Regular : sixMonthsElapsed()
+ Regular --> Expired : inactiveForThreeYears()
+ Expired --> [*]</code></pre></details>
+<p><b>Scope caveats:</b> The slide describes membership promotions and freezes, but does not define every possible counter-reset rule, billing exception or transition from every status. Do not invent those rules as if official. The state diagram above follows the explicit statements and omits unsupported transitions.</p>
+<h3>Finding a Potential Black Hole</h3><p>After checking the model, ask whether each nonterminal state has at least one reachable future transition. The state <b>Expired</b> can be intentionally terminal for the current Membership object, but the business says a customer can reapply for a <b>new membership</b>; this may be represented by a new object rather than reactivating the old one. If one incorrectly draws Expired as a stable state with no path to a new registration despite requiring the same object to be reused, it becomes a modeling ambiguity. Whether a state's lack of outgoing arrows is an error depends on the chosen lifecycle scope.</p></section><section id="part9"><h2>9. Full Clinic Walkthrough: Requirements → CRC/Class → Sequence → State → CRUDE</h2>
+<h3>English Scenario Requirements (Original, approximately 150 words)</h3><blockquote>A community clinic requires an appointment system for patients who wish to schedule consultations with doctors. A Patient can select an available Doctor and Consultation Slot, submit a booking request, and receive either a confirmation or a rejection. Receptionists may assist patients who cannot access the online service. The System must validate availability before confirming any request, prevent overlapping bookings for the same Doctor, and record each accepted Appointment with its identifier, patient, doctor, scheduled time and status. Patients may cancel or reschedule under approved clinic policies. Doctors can maintain available consultation times. The clinic manager expects reduced duplication and accurate schedules. Analysts have completed functional and structural models and must now identify the objects exchanging messages, model the normal booking scenario, inspect how an Appointment's state changes, and verify that Class responsibilities, message directions, status attributes and system requirements are consistent across all models.</blockquote>
+<h3>Step A: Grounded Analysis Artifacts</h3><div style="overflow:auto"><table><thead><tr><th>Requirement / Business Rule</th><th>Use Case / Flow</th><th>Structural Responsibility</th></tr></thead><tbody><tr><td>Patient requests booking</td><td>UC-01 Schedule Appointment</td><td>BookingController.scheduleAppointment()</td></tr><tr><td>Slot must be checked</td><td>Check Availability Action</td><td>Availability.isAvailable()</td></tr><tr><td>Approved appointment is persisted</td><td>Create Appointment Action</td><td>Appointment.create(), confirm()</td></tr><tr><td>Booking may be rejected</td><td>Unavailability Alternate Flow</td><td>Controller.reject()</td></tr><tr><td>Appointment may be cancelled</td><td>UC-02 Cancel Appointment</td><td>Appointment.cancel()</td></tr></tbody></table></div>
+<h3>Step B: CRC-to-Participant Extraction</h3><div style="overflow:auto"><table><thead><tr><th>Class / Participant</th><th>Stereotype</th><th>Reason for Lifeline</th></tr></thead><tbody><tr><td>Patient</td><td>Actor</td><td>Initiates UC</td></tr><tr><td>BookingUI</td><td>Boundary</td><td>Receives request and returns confirmation</td></tr><tr><td>BookingController</td><td>Control</td><td>Coordinates booking rules</td></tr><tr><td>Availability</td><td>Entity</td><td>Checks time slot state</td></tr><tr><td>Appointment</td><td>Entity</td><td>Stores confirmed transaction and status</td></tr></tbody></table></div>
+<h3>Step C: Instance Sequence Diagram, Normal Scenario</h3>
+<pre class="mermaid">sequenceDiagram
+ actor Patient
+ participant UI as bookingUI: BookingUI
+ participant BC as controller: BookingController
+ participant AV as availability: Availability
+ participant AP as appointment: Appointment
+ Patient->>UI: requestBooking(doctorId,slot)
+ activate UI
+ UI->>BC: schedule(patientId,doctorId,slot)
+ activate BC
+ BC->>AV: isAvailable(doctorId,slot)
+ AV-->>BC: true
+ BC->>AP: create(patientId,doctorId,slot)
+ AP-->>BC: appointmentId
+ BC->>AV: reserve(slot)
+ BC->>AP: confirm()
+ BC-->>UI: confirmed(appointmentId)
+ deactivate BC
+ UI-->>Patient: displayConfirmation()
+ deactivate UI</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>sequenceDiagram
+ actor Patient
+ participant UI as bookingUI: BookingUI
+ participant BC as controller: BookingController
+ participant AV as availability: Availability
+ participant AP as appointment: Appointment
+ Patient->>UI: requestBooking(doctorId,slot)
+ activate UI
+ UI->>BC: schedule(patientId,doctorId,slot)
+ activate BC
+ BC->>AV: isAvailable(doctorId,slot)
+ AV-->>BC: true
+ BC->>AP: create(patientId,doctorId,slot)
+ AP-->>BC: appointmentId
+ BC->>AV: reserve(slot)
+ BC->>AP: confirm()
+ BC-->>UI: confirmed(appointmentId)
+ deactivate BC
+ UI-->>Patient: displayConfirmation()
+ deactivate UI</code></pre></details>
+<p><b>V&V:</b> Every message's receiver must have the corresponding operation at its chosen modeling level; an Appointment status change must be reflected in state data. If the system must guarantee no double bookings under concurrent requests, the design must later use appropriate atomic reservation/concurrency handling; that engineering detail is beyond the analysis-level diagram.</p>
+<h3>Step D: Appointment State Machine</h3>
+<pre class="mermaid">stateDiagram-v2
+ [*] --> Requested
+ Requested --> Confirmed : confirm() [available]
+ Requested --> Rejected : reject() [unavailable]
+ Confirmed --> Cancelled : cancel() [policyAllows]
+ Confirmed --> Completed : visitCompleted()
+ Rejected --> [*]
+ Cancelled --> [*]
+ Completed --> [*]</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>stateDiagram-v2
+ [*] --> Requested
+ Requested --> Confirmed : confirm() [available]
+ Requested --> Rejected : reject() [unavailable]
+ Confirmed --> Cancelled : cancel() [policyAllows]
+ Confirmed --> Completed : visitCompleted()
+ Rejected --> [*]
+ Cancelled --> [*]
+ Completed --> [*]</code></pre></details>
+<h3>Step E: CRUDE Matrix</h3><div style="overflow:auto"><table><thead><tr><th>Caller / Target</th><th>BookingUI</th><th>BookingController</th><th>Availability</th><th>Appointment</th></tr></thead><tbody><tr><td>Patient (Actor)</td><td>E</td><td>—</td><td>—</td><td>—</td></tr><tr><td>BookingUI</td><td>—</td><td>E</td><td>—</td><td>—</td></tr><tr><td>BookingController</td><td>—</td><td>—</td><td>R,U,E</td><td>C,U,E</td></tr><tr><td>Appointment</td><td>—</td><td>—</td><td>—</td><td>—</td></tr></tbody></table></div>
+<h3>Step F: Bidirectional Traceability</h3><div style="overflow:auto"><table><thead><tr><th>Functional Model</th><th>Structural Model</th><th>Behavioral Evidence</th></tr></thead><tbody><tr><td>Schedule Appointment Use Case</td><td>BookingController; Appointment</td><td>request → check → create → confirm messages</td></tr><tr><td>Check Availability Activity</td><td>Availability.isAvailable()</td><td>Check response precedes creation</td></tr><tr><td>Cancel Appointment Flow</td><td>Appointment.cancel()</td><td>Confirmed → Cancelled transition</td></tr><tr><td>Patient permitted to book</td><td>BookingUI + Patient Actor</td><td>Boundary message and authorized workflow</td></tr></tbody></table></div>
+<p>This is an original worked teaching scenario aligned with the lecture. It is not the professor's exact clinic diagram or a supplied official answer.</p></section><section id="part10"><h2>10. Other Official Lecture Cases: Dating, Library, Parcel and CRUDE</h2>
+<h3>Dating Invitation System (slides 43–47)</h3><p>As in Chapters 3–4, the lecturer continues the Dating Website case: membership and login are required, members browse matches, and invitations are sent online. The lecture shows UCD, UC-level CD, a Sequence Diagram and the State Machine of <b>Invitation</b>, with a question asking where the future system stores status values. The structural answer must therefore include suitable Invitation attributes for lifecycle state.</p>
+<pre class="mermaid">stateDiagram-v2
+ [*] --> Draft
+ Draft --> Sent : sendInvitation()
+ Sent --> Accepted : accept()
+ Sent --> Declined : decline()
+ Sent --> Expired : responseDeadlinePassed()
+ Accepted --> [*]
+ Declined --> [*]
+ Expired --> [*]</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>stateDiagram-v2
+ [*] --> Draft
+ Draft --> Sent : sendInvitation()
+ Sent --> Accepted : accept()
+ Sent --> Declined : decline()
+ Sent --> Expired : responseDeadlinePassed()
+ Accepted --> [*]
+ Declined --> [*]
+ Expired --> [*]</code></pre></details>
+<p><b>Important caveat:</b> The names of specific Invitation states above are an instructional proposal; the text-extractable slide does not enumerate the state names shown in its image. Check the slide's pictured State-Machine Chart when reproducing the exact professor example.</p>
+<h3>Library Book Collection (slides 23–35)</h3><p>Use the <b>Borrow Books UCD</b> to construct an instance Sequence Diagram; compare interacting classes with the UC-level CD; question whether checkout data deserves a transaction class or additional information. CRUDE shows collaborations across the system, including suspicious classes without meaningful interactions.</p>
+<h3>Campus Housing CRUDE (slide 34)</h3><p>Actors: Apartment Owner, Student, Staff. Structural objects: Apartment Owner and Apartment. The exercise asks which Create/Read/Update/Delete/Execute interactions are permitted. The official matrix includes Create/Delete permissions for owner/staff and read interactions for students, but not every cell's exact layout is fully extractable as text.</p>
+<h3>Take-Home Parcel Management (slide 49)</h3><p>Task: For <b>Collect Parcel</b>, draw (1) a <b>Sequence Diagram</b> and (2) a <b>Behavioral State Machine</b> for one important object. <b>Likely focal class:</b> Parcel, because it has meaningful states such as Received, Ready for Pickup, Collected. Exact business events/guards depend on the requirements from earlier chapters and must not be invented as authoritative.</p>
+<pre class="mermaid">stateDiagram-v2
+ [*] --> Registered
+ Registered --> ReadyForPickup : staffReceivesParcel()
+ ReadyForPickup --> Collected : verifyRecipientAndHandOver()
+ Collected --> [*]</pre><details><summary>Mermaid 原始碼（可複製）</summary><pre><code>stateDiagram-v2
+ [*] --> Registered
+ Registered --> ReadyForPickup : staffReceivesParcel()
+ ReadyForPickup --> Collected : verifyRecipientAndHandOver()
+ Collected --> [*]</code></pre></details>
+<p><b>Practice assumption:</b> These three Parcel states are a study model, not a confirmed textbook or slide diagram. For graded work, align to the actual Use-Case Description and Class Diagram.</p></section><section id="part11"><h2>11. V&V: Sequence–Class–State–Functional Consistency and Pitfalls</h2>
+<p>Lecture p.42 assigns students to read textbook <b>p.182</b> for Behavioral V&V and Functional–Behavioral cross-check, and <b>p.183</b> for Structural–Behavioral cross-check. The corresponding textbook Behavioral chapter PDF is <b>not among the currently uploaded five textbook PDFs</b>. Consequently the rules below are <b>source-aligned teaching checks synthesized from the slides</b>, not falsely quoted from unavailable textbook pages.</p>
+<h3>Scenario and Diagram Walkthrough SOP</h3><ol><li>Select a UCD scenario and record its trigger, normal/alternate steps and result.</li><li>Verify an Actor and each relevant Class participant appear in the Sequence Diagram.</li><li>For each UCD action, identify sender, receiver, method and meaningful parameter; check event order.</li><li>Ensure every receiver operation and relevant association can be found in the UC-level Class Diagram, or revise the Structural Model.</li><li>Check State Machine Events correspond to operations/events that actually occur in use cases and Sequence Diagrams.</li><li>Check state names map to meaningful object attributes; Guards match business rules.</li><li>Use CRUDE to compare class collaborations across several Use Cases and discover unsupported/orphan Classes.</li><li>Walk through exceptions, unreachable states, termination paths, and revise Functional, Structural and Behavioral Models bidirectionally.</li></ol>
+<div style="overflow:auto"><table><thead><tr><th>Source ↔ Target</th><th>Consistency Rule</th><th>Diagnostic Example</th></tr></thead><tbody><tr><td>UCD → Sequence</td><td>Each relevant scenario step maps to an ordered message</td><td>Check availability before appointment confirmation</td></tr><tr><td>Activity → Sequence</td><td>Responsible actor/class and action ordering agree</td><td>Boundary sends request to controller</td></tr><tr><td>Class Diagram → Sequence</td><td>Methods and associations support receiver messages</td><td>Missing Appointment.confirm() must be added or diagram revised</td></tr><tr><td>Sequence → State Machine</td><td>Invoked events change object status consistently</td><td>confirm() causes Requested → Confirmed</td></tr><tr><td>State Machine → Class Diagram</td><td>States are representable via attributes / object structure</td><td>Appointment.status stores Confirmed</td></tr><tr><td>CRUDE → Sequence</td><td>Create/Read/Update/Execute labels reflect actual calls</td><td>Controller's C on Appointment corresponds to creation</td></tr><tr><td>Requirements → All models</td><td>Scenarios and constraints reflect business expectations</td><td>No double booking despite parallel requests</td></tr></tbody></table></div>
+<h3>Five Common Modeling Mistakes</h3><ol><li>Confusing one Instance Sequence Scenario with a Generic Diagram containing all alternate paths.</li><li>Reversing message direction or giving an operation to the wrong receiving Class.</li><li>Treating a return dashed arrow as a second method invocation.</li><li>Using Activity Diagram steps as State names, instead of modeling the focal object's attributes/lifecycle.</li><li>Ignoring unreachable/black-hole states or forgetting to update Class attributes when state transitions imply new status information.</li></ol></section><section id="part12"><h2>12. Cheat Sheet, Golden Rules, Concept Traps and Mastery</h2>
+<h3>Eight 1-Sentence Golden Rules</h3><ol><li>Behavioral Models show how object collaborations realize Use Cases and how focal objects change states.</li><li>In Sequence Diagrams, time proceeds top-to-bottom and the receiving object owns the called operation.</li><li>For this course, create <b>Instance Sequence Diagrams</b> based on one specific UCD scenario.</li><li>Sequence Diagram SOP = Context → Participants → Lifelines → Messages → Execution Occurrences → Validation.</li><li>CRUDE stands for Create, Read, Update, Delete and Execute, and provides a system-wide collaboration check.</li><li>A State Machine models the lifecycle of one object, while an Activity Diagram models workflow actions.</li><li>A Transition is triggered by an Event, may depend on a [Guard], and may perform an Action.</li><li>Behavioral V&V is bidirectional: Messages and State Transitions can require revisions to the Class Diagram and Functional Models.</li></ol>
+<section class="quiz"><h3>Quick Concept Check 1</h3><p><strong>A student is asked for a Sequence Diagram of the major normal scenario of Borrow Books. Which answer best follows the lecturer's convention?</strong></p><button onclick="answer('chapter5.html-1',0,1)">A. Show every possible scenario and unrelated use cases.</button><button onclick="answer('chapter5.html-1',1,1)">B. Create an Instance Sequence Diagram showing one selected Normal Flow and ordered messages.</button><button onclick="answer('chapter5.html-1',2,1)">C. Draw only static classes and multiplicities.</button><button onclick="answer('chapter5.html-1',3,1)">D. Draw a CRUDE matrix instead of messages.</button><p id="fbchapter5.html-1"></p><span id="expchapter5.html-1" hidden>Correct Answer: B. Slide 8 says the course uses Instance Sequence Diagrams, usually the major normal flow of the selected use case. 中文：本課程使用 Instance SD，先選定 UCD 正常流程再畫訊息。</span><details><summary>Answer & English / 中文解析</summary><p>Slide 8 says the course uses Instance Sequence Diagrams, usually the major normal flow of the selected use case.</p><p>本課程使用 Instance SD，先選定 UCD 正常流程再畫訊息。</p></details></section>
+<section class="quiz"><h3>Quick Concept Check 2</h3><p><strong>Which statement about CRUDE is correct?</strong></p><button onclick="answer('chapter5.html-2',0,2)">A. E stands for Erase, identical to Delete.</button><button onclick="answer('chapter5.html-2',1,2)">B. CRUDE is a state diagram for object status.</button><button onclick="answer('chapter5.html-2',2,2)">C. E stands for Execute, meaning one object may invoke another object's operations.</button><button onclick="answer('chapter5.html-2',3,2)">D. CRUDE replaces every Class Diagram.</button><p id="fbchapter5.html-2"></p><span id="expchapter5.html-2" hidden>Correct Answer: C. CRUDE = Create, Read, Update, Delete, Execute; its matrix checks object collaborations across the system. 中文：E 是 Execute，不是再一次 Delete，也不是 State Machine。</span><details><summary>Answer & English / 中文解析</summary><p>CRUDE = Create, Read, Update, Delete, Execute; its matrix checks object collaborations across the system.</p><p>E 是 Execute，不是再一次 Delete，也不是 State Machine。</p></details></section>
+<section class="quiz"><h3>Quick Concept Check 3</h3><p><strong>An object reaches a nonterminal state from which no valid outgoing transition is possible, although the business requires later behavior. What is the most likely issue?</strong></p><button onclick="answer('chapter5.html-3',0,1)">A. An intentional Activity Final is always correct.</button><button onclick="answer('chapter5.html-3',1,1)">B. It is a potential Black Hole or missing transition to investigate.</button><button onclick="answer('chapter5.html-3',2,1)">C. All events must be drawn as Use Cases.</button><button onclick="answer('chapter5.html-3',3,1)">D. The Class must automatically become Abstract.</button><p id="fbchapter5.html-3"></p><span id="expchapter5.html-3" hidden>Correct Answer: B. The diagram may contain an unintended black-hole/dead-end state. Validate missing events, guards, and whether the state should be terminal. 中文：沒有合理出口但業務仍需繼續時，要檢查 Black Hole 與遺漏轉移，不能只看圖能不能渲染。</span><details><summary>Answer & English / 中文解析</summary><p>The diagram may contain an unintended black-hole/dead-end state. Validate missing events, guards, and whether the state should be terminal.</p><p>沒有合理出口但業務仍需繼續時，要檢查 Black Hole 與遺漏轉移，不能只看圖能不能渲染。</p></details></section>
+<button onclick="markDone(5)">✓ Mark Chapter 5 as reviewed</button> <span id="reading"></span>
+<h3>Self-assessment</h3><ol><li>Can identify sender, receiver and return values in Java message calls.</li><li>Can draw a complete Instance Sequence Diagram with parameters and activation bars.</li><li>Can explain the 6-step SD SOP and 4 context inputs.</li><li>Can derive CRUDE entries from interactions across Use Cases.</li><li>Can draw State Machine Initial / Stable / Final States, Events and Guards.</li><li>Can check a Black Hole with an evidence-based lifecycle argument.</li><li>Can use a Sequence Diagram to identify missing Class operations/associations.</li><li>Can walk through the Borrow Books and Dating Invitation cases.</li></ol></section><p class="muted">Primary verified material: 陳仲儼 2026 Chapter 5 “Behavioral Modeling” course slides (50 pages), esp. slides 4–8, 10–11, 19–20, 23–35, 36–42, 43–49. The slides cite Dennis, Wixom & Tegarden Systems Analysis and Design with UML, 6th edition and textbook pages 182–183 for V&V. The corresponding textbook Chapter 6 PDF was not provided among the five textbook attachments, so its missing pages are not represented as directly verified. All case expansions and Mermaid renderings are labeled instructional adaptations.</p></main><script>function toggleTheme(){document.body.classList.toggle('light');localStorage.setItem('sad-notes-theme',document.body.classList.contains('light')?'light':'dark')}if(localStorage.getItem('sad-notes-theme')==='light')document.body.classList.add('light');function answer(id,selected,correct){const e=document.getElementById('fb'+id);e.className=selected===correct?'feedback':'bad';e.textContent=(selected===correct?'✓ Correct. ':'✗ Incorrect. ')+document.getElementById('exp'+id).textContent;localStorage.setItem('sad-notes-q-'+id,selected)}function markDone(ch){localStorage.setItem('sad-notes-read-'+ch,'yes');document.getElementById('reading').textContent='✓ 已標記完成'}window.addEventListener('DOMContentLoaded',()=>{for(let i=1;i<=3;i++){let a=localStorage.getItem('sad-notes-q-'+location.pathname.split('/').pop()+'-'+i);if(a!==null){let btn=document.querySelector('[data-q="'+i+'"][data-option="'+a+'"]');if(btn)btn.click()}}});</script><script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'default'});</script></body></html>
