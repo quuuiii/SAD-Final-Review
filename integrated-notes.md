@@ -238,17 +238,17 @@
 - **Three GUI Mechanisms**：**Navigation**（畫面移動）、**Input**（資料擷取）、**Output**（資訊呈現）。Q25–26 明確要求此三項。
 - **Essential UCD vs Real UCD**：**Essential** 先定義任務意圖與系統責任、不依賴具體畫面；**Real** 才把「按下 Enroll、顯示確認視窗」等操作寫出。需求穩定後再決定畫面，可避免 UI 細節反過來扭曲業務目標。
 - **Six UI Aspects**：**Layout / Content Awareness / Aesthetics / User Experience / Consistency / Minimal User Effort**；分別是自然動線、位置脈絡、視覺、操作感受、一致性、降低不必要負擔。
-- **Five Evaluation Approaches**：原卷 Q33 列 **Heuristic Evaluation / Interactive Evaluation / Walkthrough / A/B Testing / Formal Usability Testing**；名稱為**原卷直接資訊**，具體方法簡述是教學補充。不能只憑名稱將不同課程的評估流程當成老師定義。
+- **Five Evaluation Approaches**：113 原卷 Q33 列 **Heuristic Evaluation / Interactive Evaluation / Walkthrough / A/B Testing / Formal Usability Testing**。Dennis 教材對應的公開 UI 投影片列前述其中四種（不含 A/B）；**A/B Testing** 以這份考卷的第五項補入，避免混淆兩份資料的分類。
 - **VR Dimensions**：原卷 Q30 手寫 **Sensory**（感官與空間感知）及 **Affective**（情感與體驗反應），後者不等於 Effectiveness（效率）。
 
 ## Key Elements · 五種 UI 評估法
 | Approach | 特徵（教學補充） | 113 原卷 Q33 線索 |
 |---|---|---|
-| **Heuristic Evaluation** | 以設計原則由專家檢查，通常成本相對較低 | 手寫 **Least Costly = (1)** |
-| **Interactive Evaluation** | 透過互動操作與回饋觀察設計（細節依老師投影片） | 原卷列為方法 (2)，無完整定義 |
-| **Walkthrough** | 逐步示範或走查任務流程 | 手寫 **Designer Operates UI = (3)** |
-| **A/B Testing** | 分流比較版本 A 與 B，以指定指標衡量 | 原卷要求簡述概念 |
-| **Formal Usability Testing** | 在受控條件下由代表性使用者執行任務並觀察 | 手寫 **Without Designer Participation = (5)** |
+| **Heuristic Evaluation** | 依已知 **UI principles / rules of thumb** 檢查畫面設計，無須先完成使用者實測 | 手寫 **Least Costly = (1)** |
+| **Interactive Evaluation** | **Users** 實際操作 prototype，並有 **project team member** 共同觀察、協助與收集回饋 | 原卷列為 (2) |
+| **Walkthrough Evaluation** | **Design team** 向使用者呈現 prototype，逐步說明畫面與流程如何運作 | 手寫 **Designer Operates UI = (3)** |
+| **A/B Testing** | 比較版本 A／B 的預設任務指標（例如完成率、錯誤率），而非只看偏好 | 原卷加入的第五種方法 |
+| **Formal Usability Testing** | 由代表性使用者在測試環境／實驗室操作 prototype，記錄完成情形；設計師不代替使用者點擊 | 手寫 **Without Designer Participation = (5)** |
 
 ## Concrete Example · Online Course Registration UI
 | Essential UCD（不綁定技術） | Real UCD（具體畫面） |
@@ -268,7 +268,7 @@
 - **Trap 3 · Q27 / Q33**：Q27 手寫末項存在紅筆更正；Q33 的配對按**原卷手寫**保留，但仍應與老師正式投影片核對。
 - **Checkpoint**：背出 **3 mechanisms / 6 aspects / 5 evaluation approaches / 2 VR dimensions / WND + Real UCD**，並能用同一情境各舉一例。
 
-**Source**：113 年期末考 p.1 Q24–27、p.2 Q28–33；其中 Q27 有批改痕跡，表中方法特徵為教學補充。
+**Source**：113 年期末考 p.1 Q24–27、p.2 Q28–33（Q27 有批改痕跡）；UI 評估四種方法的操作特徵另核對 Dennis / Wixom / Tegarden 5th Edition Chapter 10 *Human–Computer Interaction Layer Design* 公開投影片。此公開教材不是本課教師的 2026 投影片，A/B Testing 則依 113 考卷及一般實驗設計補充。
 
 <!-- SAD:CH8 -->
 
