@@ -1,0 +1,38 @@
+/* Phase 1: layout enhancements; layered on existing site CSS. */
+.phase1-hero{background:linear-gradient(125deg,#232b58,#383486 69%,#5650af);border-radius:24px;padding:34px;color:#fff;margin-bottom:18px}
+.phase1-hero h1{font-size:clamp(27px,3.5vw,42px);line-height:1.24;letter-spacing:-.02em;margin:8px 0 12px}
+.phase1-hero p{max-width:760px;color:#e4e7ff;margin:0 0 18px}
+.phase1-hero .eyebrow{color:#c3cbff}
+.phase1-hero-actions{display:flex;flex-wrap:wrap;gap:10px}
+.phase1-hero-actions .btn{border-color:#ffffff55}
+.phase1-hero-actions .btn:not(.primary){background:#ffffff1c;color:#fff}
+.phase1-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.phase1-chapter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.phase1-chapter-card{display:flex;flex-direction:column;gap:16px}
+.phase1-chapter-heading{display:flex;align-items:flex-start;gap:13px}
+.phase1-chapter-heading strong{font-size:16px}
+.phase1-number{font-weight:850;color:var(--accent);background:var(--soft);border-radius:12px;padding:10px 12px;white-space:nowrap}
+.phase1-progressline{display:flex;align-items:center;gap:12px;margin-top:auto}
+.phase1-progressline .progress{flex:1;min-width:40px}
+.phase1-progressline span{white-space:nowrap}
+.phase1-link{align-self:flex-start}
+.phase1-home-bottom{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.phase1-home-bottom .card{min-width:0}
+.phase1-reading-panel{margin:8px 0 24px;border-left:4px solid var(--accent)}
+.phase1-reading-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.phase1-reading-top h3{margin:7px 0 3px;font-size:19px}
+.phase1-reading-top p{margin:0 0 11px}
+.phase1-ch-count{font-size:24px;font-weight:800;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
+.phase1-read-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}
+.phase1-read-item{display:flex;align-items:flex-start;gap:10px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;line-height:1.45;font-size:14px}
+.phase1-read-item:hover,.phase1-read-item:focus-within{border-color:var(--accent);background:var(--soft)}
+.phase1-read-item input{flex:none;margin-top:3px;width:17px;height:17px;accent-color:var(--accent)}
+.phase1-read-item b{color:var(--accent);margin-right:4px}
+.phase1-toc{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 20px;font-size:13px}
+.phase1-toc strong{margin-right:6px}
+.phase1-toc a{display:inline-block;text-decoration:none;background:var(--soft);padding:6px 10px;border-radius:8px}
+.phase1-toc a:hover,.phase1-toc a:focus-visible{text-decoration:underline}
+.sad-md-card[id^="phase1-sec-"]{scroll-margin-top:125px}
+@media(max-width:900px){.phase1-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.phase1-chapter-grid,.phase1-home-bottom,.phase1-read-grid{grid-template-columns:1fr}.phase1-hero{padding:25px 20px}.phase1-reading-panel{padding:15px}.phase1-reading-top{align-items:flex-start}.phase1-ch-count{font-size:20px}}
+@media print{.phase1-toc,.phase1-hero-actions,.phase1-link{display:none!important}}
