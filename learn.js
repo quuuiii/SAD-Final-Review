@@ -46,6 +46,7 @@ return '<section class="hero"><div><div class="eyebrow">BEGINNER PATH · CH1–C
 '<div class="path-card"><b>04 測驗</b><span>理解題答對才算完成</span></div></div></div>'+
 sectionTitle("完整學習地圖","先學習 Ch1 的全貌，再逐步建立系統分析模型。")+
 '<div class="chapter-grid">'+chapterCards()+'</div>'+
+'<div class="callout"><h3>☑ 章末檢測與錯題複習</h3><p>每章六題情境題，答錯可回到對應教材，之後按間隔安排複習。</p><a class="btn primary" href="mastery.html">開始能力檢測 →</a></div>'+
 '<div class="callout"><h3>✦ 完整系統分析實作專題</h3><p>學完概念與 UML 後，換一個全新案例「校園器材借用系統」，自己完成需求、Use Cases、Class、Sequence、CRUDE 與跨模型檢查。</p><a class="btn primary" href="capstone.html">開始獨立專題 →</a></div>'+
 '<div class="callout"><h3>◎ 實際動手畫 UML</h3><p>完成 Ch3–Ch5 的概念後，進入互動練習室拖放元件，練習 Use-Case、Activity、Class、Sequence Diagram。</p><a class="btn primary" href="uml-lab.html">開始 UML 圖形挑戰 →</a></div>'+
 '<div class="callout"><h3>從同一個案例理解全部章節</h3><p>我們會反覆使用「大學選課系統」：先定義問題，再寫需求、畫功能模型，找出類別，最後確認物件的訊息與狀態。</p><div class="actions">'+button("探索五個案例階段","case-1")+button("查詢專有名詞","glossary")+'</div><p class="source">本教室依 2026 年課堂 Ch1–Ch5 的主題組織。選課案例、例題和圖形是本站的教學改編，不是官方教師版解答。期末設計延伸及 113 考古題仍在原複習網站。</p></div>';
@@ -56,6 +57,7 @@ return breadcrumbs([{label:"學習地圖",route:"home"},{label:"Ch"+c.id+" · "+
 '<section class="card lesson-head"><span class="pill">CHAPTER '+c.id+'</span><h1>'+E(c.title)+'</h1><p><strong>'+E(c.en)+'</strong></p><p class="chapter-summary">'+E(c.lead)+'</p><p><strong>學完應該做到：</strong>'+E(c.outcome)+'</p>'+progress(done,c.lessons.length)+'<p class="small muted">已掌握 '+done+' / '+c.lessons.length+' 堂課。每堂課需正確完成理解測驗。</p></section>'+
 sectionTitle("本章課程","依順序閱讀，也可以自由選擇。")+
 '<div class="chapter-list">'+c.lessons.map((l,i)=>'<button type="button" class="lesson-list-item" data-route="'+linkToLesson(l)+'"><span><strong>'+c.id+'.'+(i+1)+' '+E(l.title)+'</strong><small>'+E(l.topic)+'</small></span><span class="'+(state.passed[l.id]?"finished":"muted")+'">'+(state.passed[l.id]?"✓ 已掌握":"開始學習 →")+'</span></button>').join("")+'</div>'+
+'<div class="callout"><h3>完成本章後，檢查是否真正理解</h3><p>透過六道情境題確認你是否能運用本章重點，錯誤觀念會直接連回課堂教材。</p><a class="btn primary" href="mastery.html#chapter-'+c.id+'">開始 Ch'+c.id+' 章末測驗 →</a></div>'+
 '<div class="callout"><h3>本章的選課系統案例</h3><p>'+E(data.cases[c.id-1].problem)+'</p>'+button("到案例練習室","case-"+c.id)+'</div>';
 }
 function sidebar(c,current){

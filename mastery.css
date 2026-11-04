@@ -1,0 +1,83 @@
+/* Fifth-stage study-check and spaced practice interface */
+.ms-hero{display:grid;grid-template-columns:1.5fr .8fr;align-items:center;gap:22px;background:linear-gradient(110deg,#242d62,#3d367d 73%,#6155b5);color:#fff;border-radius:25px;padding:36px}
+.ms-hero .eyebrow{color:#d5d7ff}
+.ms-hero h1{margin:9px 0 12px;font-size:clamp(28px,4vw,42px);line-height:1.25}
+.ms-hero p{color:#e3e8ff;margin:0 0 15px}
+.ms-hero .btn:not(.primary){border-color:#ffffff65;background:#ffffff1c;color:#fff}
+.ms-hero-summary{background:#ffffff17;border:1px solid #ffffff45;border-radius:17px;padding:21px}
+.ms-hero-summary>strong{font-size:33px;display:block}
+.ms-hero-summary .progress{background:#ffffff4c}
+.ms-hero-summary .progress i{background:#80dec9}
+.ms-scorecards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0}
+.ms-scorecards .card{box-shadow:none;padding:16px}
+.ms-scorecards strong{font-size:28px;display:block;line-height:1.35}
+.ms-scorecards small{font-size:12px;color:var(--sub)}
+.ms-chapters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.ms-chapter{display:flex;gap:10px;flex-direction:column;min-width:0}
+.ms-chapter-heading{display:flex;gap:12px;align-items:start}
+.ms-chapter-num{display:grid;place-items:center;flex:none;border-radius:12px;width:43px;height:43px;background:var(--tint);color:var(--accent);font-weight:800}
+.ms-chapter h3{margin:2px 0;font-size:17px}
+.ms-chapter p{margin:4px 0;color:var(--sub)}
+.ms-chapter-footer{display:flex;gap:9px;align-items:center;margin-top:auto;flex-wrap:wrap}
+.ms-chapter-footer .btn{font-size:13px}
+.ms-note{padding:14px 17px;border-left:4px solid var(--accent);background:var(--surface);border-radius:10px;font-size:14px}
+.ms-queue-row{border:1px solid var(--border);padding:15px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin:10px 0;background:var(--surface)}
+.ms-queue-row h3{margin:0 0 3px;font-size:15px}
+.ms-queue-row p{margin:3px 0;color:var(--sub);font-size:13px}
+.ms-queue-row a{white-space:nowrap}
+.ms-toolbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:17px 0}
+.ms-toolbar .btn{font-size:13px}
+.ms-quiz-shell{max-width:830px;margin:0 auto}
+.ms-quiz-head{padding:23px}
+.ms-quiz-head h1{margin:8px 0 9px;font-size:clamp(24px,3.1vw,32px)}
+.ms-quiz-meta{display:flex;align-items:center;justify-content:space-between;gap:11px;flex-wrap:wrap;margin:8px 0}
+.ms-quiz-progress{margin:14px 0}
+.ms-question{margin:14px 0;padding:25px}
+.ms-question .eyebrow{color:var(--accent)}
+.ms-question h2{font-size:23px;line-height:1.55;margin:11px 0 20px}
+.ms-options{display:grid;gap:11px}
+.ms-option{display:flex;align-items:flex-start;gap:13px;width:100%;text-align:left;padding:15px;border:1px solid var(--border);border-radius:11px;background:var(--surface);color:var(--text);cursor:pointer;font-size:15px}
+.ms-option .ms-letter{flex:none;width:27px;height:27px;border-radius:8px;background:var(--tint);color:var(--accent);font-weight:800;display:grid;place-items:center}
+.ms-option:hover:not(:disabled),.ms-option:focus-visible{border-color:var(--accent);background:var(--tint)}
+.ms-option:disabled{opacity:.75;cursor:default}
+.ms-option.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 12%,var(--surface));opacity:1}
+.ms-option.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,var(--surface));opacity:1}
+.ms-feedback{border-left:4px solid var(--accent);padding:17px;background:var(--tint);border-radius:10px;margin:17px 0}
+.ms-feedback.success{border-left-color:var(--good)}
+.ms-feedback.error{border-left-color:var(--bad)}
+.ms-feedback h3{margin:0 0 8px}
+.ms-feedback p{margin:8px 0}
+.ms-question-foot{display:flex;justify-content:space-between;gap:13px;flex-wrap:wrap;margin-top:20px}
+.ms-quiz-tip{color:var(--sub);font-size:12px}
+.ms-result-head{padding:27px}
+.ms-result-head h1{margin:9px 0 12px;font-size:clamp(26px,3.7vw,38px)}
+.ms-result-head strong.ms-big{display:block;font-size:48px;line-height:1.2}
+.ms-result-grid{display:grid;gap:12px;margin:15px 0}
+.ms-result-item{border:1px solid var(--border);border-radius:13px;padding:15px;background:var(--surface)}
+.ms-result-item strong{display:block}
+.ms-result-item p{margin:5px 0}
+.ms-result-item .bad{color:var(--bad)}
+.ms-result-item .good{color:var(--good)}
+.ms-result-item .link{display:inline-flex;margin-top:4px}
+.ms-future{text-align:left;font-size:12px;color:var(--sub)}
+.ms-history{border-collapse:collapse;width:100%;min-width:500px;font-size:13px}
+.ms-history th,.ms-history td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--border)}
+.ms-history th{background:var(--tint)}
+.ms-history-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:11px 0}
+.ms-comparison{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.ms-comparison .card{padding:16px}
+.ms-comparison p{color:var(--sub);font-size:13px;margin:5px 0}
+.ms-comparison strong{font-size:21px;display:block}
+.ms-weak-list{display:grid;gap:9px}
+.ms-weak-item{display:flex;justify-content:space-between;align-items:center;gap:13px;flex-wrap:wrap;border:1px solid var(--border);border-radius:11px;background:var(--surface);padding:13px 15px}
+.ms-weak-item b{font-size:14px}
+.ms-weak-item p{font-size:12px;color:var(--sub);margin:4px 0}
+.ms-empty{color:var(--sub);padding:24px;text-align:center}
+.ms-source{font-size:12px;color:var(--sub);border-top:1px dashed var(--border);padding-top:12px;margin-top:16px}
+.ms-calendar-legend{display:flex;gap:9px;flex-wrap:wrap;color:var(--sub);font-size:12px;margin-top:12px}
+.ms-calendar-legend>span{background:var(--tint);border-radius:8px;padding:3px 9px}
+.ms-status-pill{color:var(--good);font-weight:800;font-size:12px}
+.ms-inline-list{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:900px){.ms-scorecards{grid-template-columns:repeat(2,minmax(0,1fr))}.ms-comparison{grid-template-columns:1fr}}
+@media(max-width:720px){.ms-hero{grid-template-columns:1fr;padding:26px 20px}.ms-chapters{grid-template-columns:1fr}.ms-question{padding:17px}.ms-question h2{font-size:19px}.ms-queue-row{flex-direction:column;align-items:stretch}.ms-quiz-head{padding:17px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
