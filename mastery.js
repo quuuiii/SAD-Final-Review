@@ -46,6 +46,15 @@ section("實作能力同步練習","概念答對不代表 UML 模型已會畫。
 '<div class="ms-comparison"><div class="card"><strong>① 自學教室</strong><p>18 堂逐步教材，依弱點回看。</p><a class="btn" href="learn.html">回入門教材</a></div><div class="card"><strong>② UML 組圖</strong><p>四種圖形的操作與診斷。</p><a class="btn" href="uml-lab.html">開始畫圖</a></div><div class="card"><strong>③ 實作專題</strong><p>'+(cc&&cc.version===1?"已有專題草稿，可繼續完成":"從新的器材借用案例開始")+'。</p><a class="btn" href="capstone.html">進入專題</a></div></div>'+
 '<p class="ms-source">題目是根據 2026 Ch1–Ch5 授課主題設計的教學改編題，不是教授官方題目。原始投影片與手寫註記仍整合在各章對應的教材小節內。</p>';
 }
+function chapterIntro(ch){
+const c=course.chapters.find(x=>x.id===ch);if(!c)return home();
+const s=engine.chapterSummary(state,ch),past=s.latest;
+return '<section class="card ms-quiz-head"><span class="pill">CH'+ch+' · CHAPTER READINESS</span><h1>'+E(c.title)+' · 章末檢核</h1><p>'+E(c.lead)+'</p><p><b>本章目標：</b>'+E(c.outcome)+'</p></section>'+
+'<div class="ms-scorecards"><div class="card"><strong>'+s.attempted+' / 6</strong><small>曾嘗試題數</small></div><div class="card"><strong>'+(past?past.correct+" / "+past.total:"尚未")+'</strong><small>最近一次得分</small></div><div class="card"><strong>'+(s.passed?"✓":"○")+'</strong><small>是否曾達通過門檻</small></div><div class="card"><strong>'+c.lessons.length+'</strong><small>對應入門課程</small></div></div>'+
+'<section class="card"><h2>這一章會檢查哪些觀念？</h2><div class="ms-weak-list">'+c.lessons.map(l=>'<div class="ms-weak-item"><div><b>'+E(l.title)+'</b><p>'+E(l.topic)+'</p></div><a class="btn small" href="learn.html#lesson-'+E(l.id)+'">閱讀小節 →</a></div>').join("")+'</div>'+
+'<p class="ms-source">六道題目包含情境判斷、概念分辨及模型選擇。題目為本站教學改編，並非正式課堂考卷；通過條件為至少 5 / 6 題。</p>'+
+'<div class="ms-toolbar">'+button("開始 Ch"+ch+" 六題檢核","start-chapter-"+ch,"primary")+button("返回總覽","home")+'</div></section>';
+}
 function quiz(){
 const s=state.session;
 if(!s)return '<div class="card ms-empty">目前沒有進行中的測驗。'+button("回總覽","home")+'</div>';
@@ -86,7 +95,8 @@ return '<section class="card ms-quiz-head"><span class="pill">YOUR STUDY HISTORY
 }
 function render(){
 const v=route();
-root.innerHTML=v==="quiz"?quiz():v==="result"?result():v==="weak"?weak():v==="history"?history():home();
+const match=/^chapter-([1-5])$/.exec(v);
+root.innerHTML=match?chapterIntro(Number(match[1])):v==="quiz"?quiz():v==="result"?result():v==="weak"?weak():v==="history"?history():home();
 document.title=(v==="quiz"?"章末作答":v==="result"?"測驗結果":v==="weak"?"錯題複習":v==="history"?"作答紀錄":"掌握度檢核")+"｜SAD Learning Studio";
 }
 function start(mode,ch=null){
