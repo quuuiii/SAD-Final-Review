@@ -6,8 +6,8 @@
 "use strict";
 const mapParts={
 1:{1:0,2:2,3:2,4:1,5:1,6:1,7:3,8:4},
-2:{1:0,2:3,3:4,4:2,5:2,6:1,7:5,8:5,9:6},
-3:{1:0,2:2,3:3,4:3,5:3,6:2,7:4,8:1,9:4,10:4,11:5},
+2:{1:0,2:2,3:2,4:2,5:2,6:1,7:3,8:3,9:4},
+3:{1:0,2:2,3:2,4:2,5:2,6:2,7:3,8:2,9:3,10:3,11:4},
 4:{1:0,2:1,3:1,4:2,5:2,6:2,7:2,8:4,9:3,10:3,11:4}
 };
 const handIndex={2:[0,3,3,3],3:[0,2,3],4:[0,0,0,2,2,1],5:[0,0,2,2,3]};
@@ -24,7 +24,13 @@ const t=document.createElement("template");
 t.innerHTML=html||"";
 return t.content;
 }
-function slotAt(sections,index){return sections[Math.min(Math.max(index,0),sections.length-1)]}
+// Section indexes refer to rendered ## sections, not every ### subheading.
+// Clamp as a safety net so a future change to Markdown headings cannot break a chapter.
+function put(buckets,index,item){
+ if(!buckets.length)return;
+ const i=Number.isInteger(index)?Math.max(0,Math.min(index,buckets.length-1)):0;
+ buckets[i].push(item);
+}
 function card(kind,heading,body,page,why){
 return '<aside class="sad-topic-supplement"><div class="sad-supp-meta"><span class="sad-supp-kind">'+kind+'</span>'+(page?'<span class="sad-supp-page">'+page+'</span>':"")+'</div><strong>'+heading+'</strong><div class="sad-supp-content">'+body+'</div>'+(why?'<p class="sad-supp-why"><b>理解重點：</b>'+why+'</p>':"")+'</aside>';
 }
@@ -35,7 +41,7 @@ rows.forEach((row,i)=>{
 const cells=[...row.querySelectorAll("td")].map(x=>x.innerHTML.trim());
 if(cells.length<4)return;
 const p=cells[0].replace(/<[^>]*>/g,"").trim(),where=handIndex[ch]?.[i]??0;
-buckets[where].push(card("老師手寫註記",cells[1],'<p>'+cells[2]+'</p>',p,cells[3]));
+put(buckets,where,card("老師手寫註記",cells[1],'<p>'+cells[2]+'</p>',p,cells[3]));
 });
 }
 function extractSource(ch,sourceHtml,buckets){
@@ -46,7 +52,7 @@ const summary=detail.querySelector("summary")?.innerHTML||"投影片重點";
 const c=detail.cloneNode(true);
 c.querySelector("summary")?.remove();
 const at=slideIndex[ch]?.[i]??0;
-buckets[at].push(card("投影片原文對照",summary,c.innerHTML,"", ""));
+put(buckets,at,card("投影片原文對照",summary,c.innerHTML,"", ""));
 });
 }
 function extractPlain(ch,plainHtml,buckets){
@@ -55,7 +61,7 @@ const root=createTemplate(plainHtml);
 const title=item.querySelector("summary")?.innerHTML||"概念補充";
 const c=item.cloneNode(true);c.querySelector("summary")?.remove();
 const at=plainIndex[ch]?.[i]??0;
-buckets[at].push(card("白話教學補充",title,c.innerHTML,"", ""));
+put(buckets,at,card("白話教學補充",title,c.innerHTML,"", ""));
 });
 }
 function extractDepth(ch,fullHtml,buckets){
@@ -67,7 +73,7 @@ const n=Number(item.id.slice(4)),index=mapParts[ch][n];
 if(index==null)continue;
 const head=item.querySelector("h2")?.textContent?.trim()||"原版深入教材";
 const details='<details class="sad-topic-depth"><summary>進階閱讀 · '+head+'</summary><div class="sad-depth-body">'+item.innerHTML+'</div></details>';
-buckets[index].push(details);
+put(buckets,index,details);
 }
 }
 function attach(ch,markup,options={}){
@@ -79,14 +85,14 @@ if(legacyMode)sections=[...wrapper.querySelectorAll("section[id^='part']")];
 if(legacyMode&&!sections.length)sections=[...wrapper.querySelectorAll("section.card, section[id]")].slice(0,1);
 if(!sections.length)return markup;
 const buckets=sections.map(()=>[]);
-if(ch===1)ch1Annotations.forEach(a=>buckets[Math.min(a.index,sections.length-1)].push(card("教授投影片與手寫補充",a.heading,'<p>'+a.text+'</p>',a.page,a.why)));
+if(ch===1)ch1Annotations.forEach(a=>put(buckets,a.index,card("教授投影片與手寫補充",a.heading,'<p>'+a.text+'</p>',a.page,a.why)));
 if(options.hand)extractHand(ch,options.hand,buckets);
 if(options.source)extractSource(ch,options.source,buckets);
 if(options.plain)extractPlain(ch,options.plain,buckets);
 if(options.full&&!legacyMode)extractDepth(ch,options.full,buckets);
 if(ch===5&&options.textbook) {
  const idx=Math.min(2,sections.length-1);
- buckets[idx].push('<details class="sad-topic-depth"><summary>進階閱讀 · 行為模型完整圖例與課本說明</summary><div class="sad-depth-body">'+options.textbook+'</div></details>');
+ put(buckets,idx,'<details class="sad-topic-depth"><summary>進階閱讀 · 行為模型完整圖例與課本說明</summary><div class="sad-depth-body">'+options.textbook+'</div></details>');
 }
 sections.forEach((section,i)=>{
 if(!buckets[i].length)return;
