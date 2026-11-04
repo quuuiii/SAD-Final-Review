@@ -57,7 +57,7 @@ return breadcrumbs([{label:"學習地圖",route:"home"},{label:"Ch"+c.id+" · "+
 '<section class="card lesson-head"><span class="pill">CHAPTER '+c.id+'</span><h1>'+E(c.title)+'</h1><p><strong>'+E(c.en)+'</strong></p><p class="chapter-summary">'+E(c.lead)+'</p><p><strong>學完應該做到：</strong>'+E(c.outcome)+'</p>'+progress(done,c.lessons.length)+'<p class="small muted">已掌握 '+done+' / '+c.lessons.length+' 堂課。每堂課需正確完成理解測驗。</p></section>'+
 sectionTitle("本章課程","依順序閱讀，也可以自由選擇。")+
 '<div class="chapter-list">'+c.lessons.map((l,i)=>'<button type="button" class="lesson-list-item" data-route="'+linkToLesson(l)+'"><span><strong>'+c.id+'.'+(i+1)+' '+E(l.title)+'</strong><small>'+E(l.topic)+'</small></span><span class="'+(state.passed[l.id]?"finished":"muted")+'">'+(state.passed[l.id]?"✓ 已掌握":"開始學習 →")+'</span></button>').join("")+'</div>'+
-'<div class="callout"><h3>完成本章後，檢查是否真正理解</h3><p>透過六道情境題確認你是否能運用本章重點，錯誤觀念會直接連回課堂教材。</p><a class="btn primary" href="mastery.html">開始 Ch'+c.id+' 章末測驗 →</a></div>'+
+'<div class="callout"><h3>完成本章後，檢查是否真正理解</h3><p>透過六道情境題確認你是否能運用本章重點，錯誤觀念會直接連回課堂教材。</p><a class="btn primary" href="mastery.html#chapter-'+c.id+'">開始 Ch'+c.id+' 章末測驗 →</a></div>'+
 '<div class="callout"><h3>本章的選課系統案例</h3><p>'+E(data.cases[c.id-1].problem)+'</p>'+button("到案例練習室","case-"+c.id)+'</div>';
 }
 function sidebar(c,current){
