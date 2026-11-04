@@ -73,14 +73,17 @@ buckets[index].push(details);
 function attach(ch,markup,options={}){
 if(ch<1||ch>5)return markup;
 const wrapper=createTemplate('<div class="sad-supp-wrapper">'+markup+'</div>');
-const sections=[...wrapper.querySelectorAll("section.sad-md-card")];
+let sections=[...wrapper.querySelectorAll("section.sad-md-card")];
+const legacyMode=sections.length===0;
+if(legacyMode)sections=[...wrapper.querySelectorAll("section[id^='part']")];
+if(legacyMode&&!sections.length)sections=[...wrapper.querySelectorAll("section.card, section[id]")].slice(0,1);
 if(!sections.length)return markup;
 const buckets=sections.map(()=>[]);
 if(ch===1)ch1Annotations.forEach(a=>buckets[Math.min(a.index,sections.length-1)].push(card("教授投影片與手寫補充",a.heading,'<p>'+a.text+'</p>',a.page,a.why)));
 if(options.hand)extractHand(ch,options.hand,buckets);
 if(options.source)extractSource(ch,options.source,buckets);
 if(options.plain)extractPlain(ch,options.plain,buckets);
-if(options.full)extractDepth(ch,options.full,buckets);
+if(options.full&&!legacyMode)extractDepth(ch,options.full,buckets);
 if(ch===5&&options.textbook) {
  const idx=Math.min(2,sections.length-1);
  buckets[idx].push('<details class="sad-topic-depth"><summary>進階閱讀 · 行為模型完整圖例與課本說明</summary><div class="sad-depth-body">'+options.textbook+'</div></details>');
