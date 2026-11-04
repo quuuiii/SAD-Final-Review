@@ -21,6 +21,21 @@
 - **Unified Process (UP)**：時間軸是 **Inception / Elaboration / Construction / Transition / Production**，工作軸是各種 **Engineering / Supporting Workflows**。工作量會隨階段變化，流程不是完全不重疊的直線。
 - **UML**：以一致符號跨越 **Functional / Structural / Behavioral** 模型。模型描述同一系統的不同面向，畫完一張圖仍須跨圖核對。
 
+## Key Elements · SDLC 與 Methodology 對照
+| Phase / Approach | 核心工作或適用情境 | 常見誤解 |
+|---|---|---|
+| **Planning** | **System Request、Feasibility、Workplan**；確認 Why | 先寫程式才找需求 |
+| **Analysis** | **Requirements、UML Models、System Proposal**；確認 What | 與 Design 完全相同 |
+| **Design** | **Architecture、UI、Database、Classes**；確認 How | 只畫畫面就完成設計 |
+| **Implementation** | **Code、Test、Deploy、Support** | 上線後不再維護 |
+| **Waterfall** | 需求穩定、階段文件完整 | 適合任何高度不確定需求 |
+| **Prototyping / RAD** | 早期 Feedback 幫助釐清需求 | 原型可不經測試直接上線 |
+| **Agile / Iterative** | 短週期持續修訂與交付 | 代表不需要需求追蹤 |
+| **DevOps** | 開發與維運共同改善交付 | 可以省略品質控制 |
+
+- **Workflows ≠ Phases**：Unified Process 以 Phases 表示時間，以 Workflows 表示工作類型，兩者在實際執行中可重疊。
+- **Design rationale**：Methodology 是安排探索、溝通與交付節奏的方法，應依需求不確定性、利害關係人參與及風險選擇。
+
 ## Concrete Example · Student 類別階層
 | Class | Operations | 設計判斷 |
 |---|---|---|
@@ -67,6 +82,29 @@
 - **Textbook Proposal Template（課本更細的呈現方式）**：**Table of Contents → Executive Summary → System Request → Workplan → Feasibility Analysis → Requirements Definition → Functional Models → Structural Models → Behavioral Models → Appendices**。這是完整報告排版模板，與投影片 p.42 的**概括六項內容**屬不同層次，不可誤認老師在 p.42 逐字列出十章。
 - **Executive Summary: Read first, write last**：放在前面方便忙碌主管先掌握決策結論；撰寫時通常待需求、成本、可行性與模型完成後再統整，以免摘要與正文矛盾。**最後撰寫為實務建議**，非 p.42 逐字規定。
 
+### Eight Requirements Analysis Strategies
+
+| Strategy | 先追問的問題 |
+|---|---|
+| **Problem Analysis** | 目前的業務問題是什麼？ |
+| **Root Cause Analysis** | 造成問題的根因是什麼？可用 **Fishbone Diagram**。 |
+| **Duration Analysis** | 哪些步驟浪費等待時間？ |
+| **Activity-Based Costing** | 哪些活動產生成本？ |
+| **Informal Benchmarking** | 其他組織有什麼可參考作法？ |
+| **Outcome Analysis** | 從理想結果倒推，流程該怎麼改？ |
+| **Technology Analysis** | 新技術能支援哪些新流程？ |
+| **Activity Elimination** | 哪些活動可以直接刪除？ |
+
+### Five Requirements Gathering Techniques
+
+- **Interviews**：適合深入發掘需求與例外情況。
+- **Questionnaires**：大量蒐集標準化意見，需留意回覆率。
+- **Observation**：觀察真實操作，留意 **Hawthorne Effect**。
+- **Document Analysis**：檢查現有表單、規則、歷史紀錄。
+- **Joint Application Development (JAD)**：透過跨角色工作坊協調並確認需求。
+
+**Source**：以上策略與蒐集方法依 2026 Ch2 授課投影片。流程順序是理解輔助，不代表每個專案都需依序做八種分析。
+
 ## Concrete Example · 選課需求從模糊到可驗收
 | Before | After | 檢查結果 |
 |---|---|---|
@@ -109,6 +147,17 @@
 | **Normal Flow / Sub-flows** | 主流程及分解流程 |
 | **Alternate / Exception Flows** | 例外與其他情況 |
 
+### Three Functional Artifacts
+
+| Artifact | Focus | 必須核對的內容 |
+|---|---|---|
+| **Use-Case Diagram** | **Actors / Use Cases / Boundary** | 有沒有少重要 Actor 或過度切分功能？ |
+| **Activity Diagram** | **Actions / Decisions / Parallelism** | 分支和責任泳道是否合理？ |
+| **Use-Case Description** | **Trigger / Main / Alternate / Exception Flow** | 是否能推導測試案例與後續 Sequence？ |
+
+- **Modeling boundary**：Activity Diagram 的 **Action** 不代表一定要額外新增一個 Class；先依責任與資料判定是否成為 Operation。
+- **Traceability**：Use Case → UCD Event → Activity Action → Class Operation，能避免模型只畫表面而無法實作。
+
 ## Concrete Example · Online Course Registration
 - **User Story**：As a student, I want to manage my enrollments so that I can build a valid schedule.
 - **Use Cases**：**Search Courses**、**Enroll in Course**、**Drop Course**；分解依獨立業務目標，而非僅依每一個按鈕。
@@ -139,6 +188,21 @@
 - **Generalization** 是 is-a；**Aggregation / Composition** 是 whole-part；**Association** 是一般互動／交易關係。看業務語意而非單看動詞。
 - **Multiplicity** 影響程式實作：**1** 通常可存 object reference；**0..*** 或 **1..*** 可用 collection，例如 **ArrayList**。這是**實作選擇**，不是 UML 規定一條關聯必然產生一個 ArrayList。
 - **Entity / Boundary / Control**：**Entity** 持有業務資料、**Boundary** 接外部介面、**Control** 協調 Use Case。分清責任有助降低 UI 與資料操作相互糾纏。
+
+## Key Elements · Relationship & Code Mapping
+
+| Relationship | Semantic test | Design implication |
+|---|---|---|
+| **Generalization** | **Is-a** | 共通 Attributes / Operations 抽到 Superclass |
+| **Association** | 一般業務互動 | 用參照或 Collection 連結 Objects |
+| **Aggregation** | Whole–Part，部分仍可獨立 | 需檢查部分物件生命週期 |
+| **Composition** | 強烈生命週期依存 | 部分通常由整體管理 |
+| **Multiplicity** | 1、0..1、0..*、1..* | 決定單一 Reference 或 Collection 的可能性 |
+| **Navigability** | 哪方需要知道對方？ | 影響實作參照方向 |
+
+- **Superclass Inheritance**：Student 已定義的方法可以直接被 Subclass 使用，不需再次宣告。
+- **Design caveat**：Multiplicity 影響容器選擇，但「一對多」不等於「一定要 ArrayList」。
+- **CRC Validation**：以 Responsibility / Collaboration 角色扮演，檢查是否將太多工作塞到某一 Class。
 
 ## Concrete Example · Library Checkout Records
 | Model Layer | 內容 | 為什麼 |
@@ -175,6 +239,21 @@
 - **Message & Operation Consistency**：Sequence Diagram 中若向 Book 發送 **checkOut()**，應檢查 Class Diagram 中 Book 或適當的 Control Class 是否真的有對應 Operation。
 - **CRUDE**：用矩陣檢查哪些類別被建立、讀取、更新、刪除或執行。若有類別既不被使用、也不與其他物件合作，可能是模型多餘或責任分配不完整。
 - **State Machine**：關注 **State / Event / Guard / Transition / Action**，例如訂單由 Pending 經付款事件成為 Paid；「點擊按鈕」通常是事件，不是持續狀態。
+
+## Key Elements · Interaction and State Notation
+
+| Element | Meaning | Checkpoint |
+|---|---|---|
+| **Actor / Lifeline** | 系統邊界外角色與物件生命線 | 不必照抄線下流程的所有人 |
+| **Message / Parameter** | 呼叫接收者的 Operation | Receiver 是否擁有該方法？ |
+| **Return** | 方法回傳資料 | 不當作獨立 Use Case |
+| **Sequence Diagram** | 訊息的時間先後 | 由 Main Event Flow 推導 |
+| **Communication Diagram** | Object Links 與訊息流 | 不是用來取代時間排序 |
+| **State / Transition** | 有意義的物件狀態與轉換 | State 不是「按下按鈕」 |
+| **Event / Guard** | 觸發事件與判斷條件 | Guard 不符合時不應強行轉換 |
+
+- **Cross-model reasoning**：從 UCD 主流程找出 Messages；若 Sequence 發現還需要保留 Checkout 紀錄，便回頭檢查 Class Diagram 與 CRUDE Matrix。
+- **Handwriting link**：Ch5 p.28 的 **ArrayList** 是借閱紀錄保存位置的課堂示例，不是 UML 連線的定義。
 
 ## Concrete Example · Borrow Book: As-Is → To-Be
 | As-Is（櫃檯） | To-Be（線上自助） |
