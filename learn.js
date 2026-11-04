@@ -46,6 +46,7 @@ return '<section class="hero"><div><div class="eyebrow">BEGINNER PATH · CH1–C
 '<div class="path-card"><b>04 測驗</b><span>理解題答對才算完成</span></div></div></div>'+
 sectionTitle("完整學習地圖","先學習 Ch1 的全貌，再逐步建立系統分析模型。")+
 '<div class="chapter-grid">'+chapterCards()+'</div>'+
+'<div class="callout"><h3>◎ 實際動手畫 UML</h3><p>完成 Ch3–Ch5 的概念後，進入互動練習室拖放元件，練習 Use-Case、Activity、Class、Sequence Diagram。</p><a class="btn primary" href="uml-lab.html">開始 UML 圖形挑戰 →</a></div>'+
 '<div class="callout"><h3>從同一個案例理解全部章節</h3><p>我們會反覆使用「大學選課系統」：先定義問題，再寫需求、畫功能模型，找出類別，最後確認物件的訊息與狀態。</p><div class="actions">'+button("探索五個案例階段","case-1")+button("查詢專有名詞","glossary")+'</div><p class="source">本教室依 2026 年課堂 Ch1–Ch5 的主題組織。選課案例、例題和圖形是本站的教學改編，不是官方教師版解答。期末設計延伸及 113 考古題仍在原複習網站。</p></div>';
 }
 function chapterPage(c){
@@ -81,6 +82,7 @@ return breadcrumbs([{label:"學習地圖",route:"home"},{label:"Ch"+c.id+" "+c.t
 '<section class="card lesson-card"><span class="route-label">05 · PITFALL</span><h2>最容易混淆的地方</h2><div class="tip">'+E(l.pitfall)+'</div><p class="source">對應範圍：'+E(l.source)+'。本站的說明、例題與圖形為教學整理與改編，非逐字引述講義。</p></section>'+
 quizPanel(l)+
 '<div class="lesson-actions"><div>'+(previous?button("← 上一課",linkToLesson(previous)) : button("← 回章節","chapter-"+c.id))+'</div><div>'+button(next?"下一課 →":"完成所有入門課程 →",next?linkToLesson(next):"case-5","primary")+'</div></div>'+
+(c.id>=3?'<div class="callout"><h3>換你動手畫 UML</h3><p>把這章的概念用拖放圖形與逐步檢查練習一次。</p><a class="btn" href="uml-lab.html#'+(c.id===3?"usecase":c.id===4?"class":"sequence")+'">進入 UML 練習室 →</a></div>':"")+
 '<div class="callout"><strong>還想看完整教授課堂資料？</strong><p class="small muted">原本網站的 Ch'+c.id+' 整合講義有更深入的理論、投影片對照和考前練習。</p><a href="index.html">前往整合教材與模擬考 →</a></div>'+
 '</div></div>';
 }
@@ -96,7 +98,7 @@ return breadcrumbs([{label:"學習地圖",route:"home"},{label:"跨章專題：�
 '<p class="source">本系列為配合 2026 課堂 Ch1–Ch5 所設計的簡化選課平台案例；不是正式完整系統規格，也不是教師提供的標準答案。</p></section>'+
 '<div class="lesson-actions">'+(n>1?button("← 上一階段","case-"+(n-1)):button("← 回學習地圖","home"))+
 (n<5?button("下一階段 →","case-"+(n+1),"primary"):button("回到課程總覽","home","primary"))+'</div>'+
-'<section class="callout"><h3>連結到本章學習</h3><p>想知道這個階段的產出物如何推導？先完成 Ch'+n+' 的教學，再回來檢查專題。</p>'+button("打開 Ch"+n+" 完整教學","chapter-"+n)+'</section>';
+'<section class="callout"><h3>連結到本章學習</h3><p>想知道這個階段的產出物如何推導？先完成 Ch'+n+' 的教學，再回來檢查專題。</p>'+button("打開 Ch"+n+" 完整教學","chapter-"+n)+(n>=3?' <a class="btn" href="uml-lab.html#'+(n===3?"usecase":n===4?"class":"sequence")+'">練習本章 UML →</a>':"")+'</section>';
 }
 let termFilter="",termChapter="all";
 function glossaryResults(){
