@@ -50,6 +50,7 @@ sequencePrompts:[
 {from:"LoanController",to:"Equipment",kind:"call",message:"checkAvailability()",hint:"控制物件檢查器材的可借狀態"},
 {from:"Equipment",to:"LoanController",kind:"return",message:"available",hint:"器材回傳名額／可借狀態"},
 {from:"LoanController",to:"Loan",kind:"call",message:"create()",hint:"可借時建立借用紀錄"},
+{from:"LoanController",to:"Equipment",kind:"call",message:"markOnLoan()",hint:"建立 Loan 後更新器材可借狀態"},
 {from:"LoanController",to:"LoanUI",kind:"return",message:"confirmed",hint:"將完成結果回傳 UI"}
 ],
 statePrompts:[
