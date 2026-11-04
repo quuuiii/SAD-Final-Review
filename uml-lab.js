@@ -28,28 +28,28 @@ function bar(a,b){return '<div class="progress" role="progressbar" aria-label="�
 function btn(text,action,variant=""){return '<button type="button" class="btn '+variant+'" data-action="'+escapeHTML(action)+'">'+escapeHTML(text)+'</button>'}
 function opts(s){return s.options.map((v,i)=>'<button type="button" class="lab-token" draggable="true" data-token="'+i+'" data-token-slot="'+escapeHTML(s.id)+'" title="可拖到左側相符欄位，或直接點選"><span class="grip" aria-hidden="true">⠿</span>'+escapeHTML(v)+'</button>').join("")}
 function svgUsecase(a){
-let out='<rect x="201" y="34" width="498" height="275" rx="9" fill="none" stroke="currentColor" stroke-opacity=".62" stroke-width="1.6"/>';
-out+=svgText(450,59,getField(a,"boundary"),'font-size="16" font-weight="700"');
+let out='<rect x="188" y="34" width="680" height="275" rx="9" fill="none" stroke="currentColor" stroke-opacity=".62" stroke-width="1.6"/>';
+out+=svgText(529,59,getField(a,"boundary"),'font-size="16" font-weight="700"');
 out+='<circle cx="86" cy="107" r="12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M86 119V160 M60 140L86 130L112 140 M86 160L65 187 M86 160L107 187" fill="none" stroke="currentColor" stroke-width="2"/>';
 out+=svgText(87,211,getField(a,"actor"),'font-size="15" font-weight="700"');
-out+='<ellipse cx="389" cy="150" rx="117" ry="32" fill="var(--tint)" stroke="#6466ce" stroke-width="2"/>';
-out+=svgText(389,155,getField(a,"base"),'font-size="14" font-weight="700"');
-out+='<ellipse cx="581" cy="103" rx="105" ry="30" fill="var(--surface)" stroke="#6466ce" stroke-width="1.8"/>';
-out+=svgText(581,108,getField(a,"included"),'font-size="13"');
-out+='<ellipse cx="568" cy="250" rx="119" ry="32" fill="var(--surface)" stroke="#6466ce" stroke-width="1.8"/>';
-out+=svgText(568,255,getField(a,"extension"),'font-size="12"');
-out+=svgLine(116,146,270,150);
+out+='<ellipse cx="427" cy="154" rx="120" ry="32" fill="var(--tint)" stroke="#6466ce" stroke-width="2"/>';
+out+=svgText(427,159,getField(a,"base"),'font-size="14" font-weight="700"');
+out+='<ellipse cx="714" cy="106" rx="124" ry="30" fill="var(--surface)" stroke="#6466ce" stroke-width="1.8"/>';
+out+=svgText(714,111,getField(a,"included"),'font-size="13"');
+out+='<ellipse cx="713" cy="251" rx="143" ry="32" fill="var(--surface)" stroke="#6466ce" stroke-width="1.8"/>';
+out+=svgText(713,256,getField(a,"extension"),'font-size="12"');
+out+=svgLine(116,146,305,151);
 if(getAnswer(a,"includeDirection")){
 const reverse=getAnswer(a,"includeDirection")!=="Enroll → Verify Eligibility";
-out+=reverse?svgArrow(502,121,482,141,true):svgArrow(482,141,502,121,true);
-out+=svgText(541,76,"«include»",'font-size="12" font-style="italic"');
+out+=reverse?svgArrow(592,119,545,146,true):svgArrow(545,146,592,119,true);
+out+=svgText(587,84,"«include»",'font-size="12" font-style="italic"');
 }
 if(getAnswer(a,"extendDirection")){
 const reverse=getAnswer(a,"extendDirection")!=="Discount → Enroll";
-out+=reverse?svgArrow(445,172,496,228,true):svgArrow(496,228,445,172,true);
-out+=svgText(449,228,"«extend»",'font-size="12" font-style="italic"');
+out+=reverse?svgArrow(519,180,577,228,true):svgArrow(577,228,519,180,true);
+out+=svgText(550,228,"«extend»",'font-size="12" font-style="italic"');
 }
-return svgFrame(720,340,out,"Use-Case Diagram 練習預覽，顯示目前選取的 Actor、Use Cases 與關係方向");
+return svgFrame(900,340,out,"Use-Case Diagram 練習預覽，顯示目前選取的 Actor、Use Cases 與關係方向");
 }
 function svgActivity(a){
 const text=(id)=>getField(a,id);
@@ -181,7 +181,7 @@ const ex=model[route()];if(!ex)return;
 const slot=ex.slots.find(s=>s.id===slotId);if(!slot||!Number.isInteger(index)||index<0||index>=slot.options.length)return;
 const drafts=state.drafts[ex.id]||{};
 drafts[slot.id]=slot.options[index];
-state.drafts[ex.id]=drafts;active[ex.id]=slot.id;
+state.drafts[ex.id]=drafts;active[ex.id]=ex.slots.find(s=>getAnswer(drafts,s.id)==null)?.id||slot.id;
 delete feedback[ex.id];save();render();
 notice("已選擇「"+drafts[slot.id]+"」，請繼續填寫其他欄位。");
 }
