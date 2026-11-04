@@ -9,6 +9,7 @@ let state;
 try{state=engine.normalize(JSON.parse(localStorage.getItem(STORAGE)||"{}"))}catch(err){state=engine.makeBlank()}
 let showDiagnostics=false;
 const stageIds=data.steps.map(x=>x.id),stage=()=>{let p=decodeURIComponent(location.hash.slice(1));return stageIds.includes(p)?p:"requirements"};
+const title=id=>data.steps.find(x=>x.id===id)?.zh||id;
 function save(){try{localStorage.setItem(STORAGE,JSON.stringify(state))}catch(err){notice("無法在此瀏覽器儲存，請立即匯出 JSON 備份")}}
 function notice(s){const el=document.getElementById("capstoneNotice");if(el)el.textContent=s}
 const btn=(name,action,kind="")=>'<button type="button" class="btn '+kind+'" data-action="'+E(action)+'">'+E(name)+'</button>';
