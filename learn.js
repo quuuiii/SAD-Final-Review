@@ -46,6 +46,7 @@ return '<section class="hero"><div><div class="eyebrow">BEGINNER PATH · CH1–C
 '<div class="path-card"><b>04 測驗</b><span>理解題答對才算完成</span></div></div></div>'+
 sectionTitle("完整學習地圖","先學習 Ch1 的全貌，再逐步建立系統分析模型。")+
 '<div class="chapter-grid">'+chapterCards()+'</div>'+
+'<div class="callout"><h3>✦ 完整系統分析實作專題</h3><p>學完概念與 UML 後，換一個全新案例「校園器材借用系統」，自己完成需求、Use Cases、Class、Sequence、CRUDE 與跨模型檢查。</p><a class="btn primary" href="capstone.html">開始獨立專題 →</a></div>'+
 '<div class="callout"><h3>◎ 實際動手畫 UML</h3><p>完成 Ch3–Ch5 的概念後，進入互動練習室拖放元件，練習 Use-Case、Activity、Class、Sequence Diagram。</p><a class="btn primary" href="uml-lab.html">開始 UML 圖形挑戰 →</a></div>'+
 '<div class="callout"><h3>從同一個案例理解全部章節</h3><p>我們會反覆使用「大學選課系統」：先定義問題，再寫需求、畫功能模型，找出類別，最後確認物件的訊息與狀態。</p><div class="actions">'+button("探索五個案例階段","case-1")+button("查詢專有名詞","glossary")+'</div><p class="source">本教室依 2026 年課堂 Ch1–Ch5 的主題組織。選課案例、例題和圖形是本站的教學改編，不是官方教師版解答。期末設計延伸及 113 考古題仍在原複習網站。</p></div>';
 }

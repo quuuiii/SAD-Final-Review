@@ -1,0 +1,21 @@
+/* In-line chapter references are attached beside the relevant concept, never in a separate archive. */
+.sad-embedded-supplements{margin:18px 0 4px;padding-top:15px;border-top:1px solid var(--line);display:grid;gap:10px}
+.sad-supp-heading{font-size:14px;color:var(--accent);font-weight:850;letter-spacing:.02em;margin-bottom:1px}
+.sad-topic-supplement{margin:0;background:color-mix(in srgb,var(--accent) 4%,var(--paper));border:1px solid var(--line);border-left:3px solid var(--accent);padding:13px 15px;border-radius:12px}
+.sad-topic-supplement>strong{display:block;margin:6px 0 5px;font-size:15px}
+.sad-topic-supplement .sad-supp-content{line-height:1.65;font-size:14px;overflow-wrap:anywhere}
+.sad-topic-supplement p{margin:6px 0}
+.sad-supp-meta{display:flex;gap:8px;flex-wrap:wrap;font-size:11px;font-weight:780}
+.sad-supp-kind{color:var(--accent)}
+.sad-supp-page{color:var(--muted);border-left:1px solid var(--line);padding-left:8px}
+.sad-supp-why{border-top:1px dashed var(--line);padding-top:7px;color:var(--muted);font-size:13px}
+.sad-topic-depth{margin:2px 0 6px;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--paper)}
+.sad-topic-depth>summary{list-style-position:inside;padding:12px 14px;font-weight:770;cursor:pointer;color:var(--accent)}
+.sad-topic-depth>summary:hover{background:var(--soft)}
+.sad-depth-body{padding:6px 17px 18px;overflow-x:auto}
+.sad-depth-body h2{font-size:18px}.sad-depth-body h3{font-size:16px}
+.sad-depth-body table{max-width:100%;width:100%;border-collapse:collapse}
+.sad-depth-body .card{box-shadow:none;margin:12px 0}
+.sad-depth-body pre{overflow-x:auto;white-space:pre;max-width:100%}
+.sad-md-card{scroll-margin-top:110px}
+@media(max-width:650px){.sad-topic-supplement{padding:12px}.sad-depth-body{padding:6px 10px 14px}}
