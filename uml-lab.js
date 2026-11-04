@@ -21,7 +21,7 @@ function notice(s){const el=document.getElementById("liveNotice");if(el)el.textC
 const count=()=>exercises.filter(e=>state.solved[e.id]).length;
 const currentAnswers=ex=>state.drafts[ex.id]||{};
 function getAnswer(a,id){return Object.prototype.hasOwnProperty.call(a,id)?a[id]:null}
-function getField(ex,a,id){const value=getAnswer(a,id);return value==null?"？":value}
+function getField(a,id){const value=getAnswer(a,id);return value==null?"？":value}
 function isSolved(ex){return !!state.solved[ex.id]}
 function pc(a,b){return b?Math.round(a/b*100):0}
 function bar(a,b){return '<div class="progress" role="progressbar" aria-label="已完成挑戰進度" aria-valuenow="'+a+'" aria-valuemin="0" aria-valuemax="'+b+'"><i style="width:'+pc(a,b)+'%"></i></div>'}
