@@ -70,8 +70,10 @@ return '<section class="card lesson-card quiz-panel" id="quiz-panel" aria-label=
 }
 function lessonPage(l){
 const c=lessonChapter(l.id),ix=c.lessons.findIndex(x=>x.id===l.id),previous=ix>0?c.lessons[ix-1]:null,next=ix<c.lessons.length-1?c.lessons[ix+1]:data.chapters[c.id]?.lessons[0]||null;
+const matches=data.glossary.filter(t=>t.ch===c.id&&(l.topic.toLowerCase().includes(t.en.toLowerCase())||l.definition.toLowerCase().includes(t.en.toLowerCase()))).slice(0,5);
+const related=matches.length?'<div class="subnav"><span class="small muted">本課相關術語：</span>'+matches.map(t=>'<button type="button" class="btn small" data-term="'+E(t.en)+'">'+E(t.en)+'</button>').join("")+'</div>':"";
 return breadcrumbs([{label:"學習地圖",route:"home"},{label:"Ch"+c.id+" "+c.title,route:"chapter-"+c.id},{label:l.title}])+
-'<div class="content-layout">'+sidebar(c,l.id)+'<div class="lesson-content"><section class="card lesson-head"><span class="pill">CH'+c.id+' · LESSON '+(ix+1)+' / '+c.lessons.length+'</span><h1>'+E(l.title)+'</h1><p><strong>'+E(l.topic)+'</strong></p><p class="small muted">這是一步步學習的入門教材。進階細節可在整合講義中延伸閱讀。</p></section>'+
+'<div class="content-layout">'+sidebar(c,l.id)+'<div class="lesson-content"><section class="card lesson-head"><span class="pill">CH'+c.id+' · LESSON '+(ix+1)+' / '+c.lessons.length+'</span><h1>'+E(l.title)+'</h1><p><strong>'+E(l.topic)+'</strong></p><p class="small muted">這是一步步學習的入門教材。進階細節可在整合講義中延伸閱讀。</p>'+related+'</section>'+
 '<section class="card lesson-card"><span class="route-label">01 · WHY</span><h2>為什麼需要學這個？</h2><p class="lesson-cue">'+E(l.why)+'</p></section>'+
 '<section class="card lesson-card"><span class="route-label">02 · WHAT</span><h2>白話理解核心概念</h2><p>'+E(l.definition)+'</p></section>'+
 '<section class="card lesson-card"><span class="route-label">03 · HOW</span><h2>照著步驟思考</h2><ol>'+l.steps.map(s=>'<li>'+E(s)+'</li>').join("")+'</ol></section>'+
@@ -151,6 +153,7 @@ document.addEventListener("click",e=>{
 const routeButton=e.target.closest("[data-route]");
 if(routeButton){jump(routeButton.dataset.route);return}
 const nav=e.target.closest("[data-nav]");if(nav){jump(nav.dataset.nav);return}
+const term=e.target.closest("[data-term]");if(term){termFilter=term.dataset.term;termChapter="all";jump("glossary");return}
 const q=e.target.closest("[data-quiz][data-choice]");if(q){updateQuiz(q.dataset.quiz,Number(q.dataset.choice))}
 });
 document.addEventListener("input",e=>{
