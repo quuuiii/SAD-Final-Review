@@ -160,6 +160,7 @@ const group=input.dataset.group,index=Number(input.dataset.index),f=input.datase
 if(group==="normal"){if(state.usecases[index]?.normal[f]!==undefined)state.usecases[index].normal[f]=input.value}
 else if(state[group]?.[index]&&typeof state[group][index][f]==="string")state[group][index][f]=input.value;
 save();showDiagnostics=false;
+const issues=document.querySelectorAll(".cap-issues");issues.forEach(x=>{x.innerHTML='<div class="cap-issue review">資料已修改，請重新執行規則檢查，以取得最新的診斷結果。</div>'});
 });
 document.addEventListener("change",event=>{
 const el=event.target;
@@ -174,6 +175,7 @@ row.ops=el.checked?[...new Set([...row.ops,op])]:row.ops.filter(x=>x!==op);
 else if(el.matches("select[data-group]")){const x=state[el.dataset.group]?.[Number(el.dataset.index)];if(x)x[el.dataset.field]=el.value}
 else return;
 save();showDiagnostics=false;
+const issues=document.querySelectorAll(".cap-issues");issues.forEach(x=>{x.innerHTML='<div class="cap-issue review">資料已修改，請重新執行規則檢查，以取得最新的診斷結果。</div>'});
 });
 document.getElementById("capstoneImport")?.addEventListener("change",async event=>{
 const f=event.target.files?.[0];if(!f)return;
