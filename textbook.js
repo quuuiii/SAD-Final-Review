@@ -12,7 +12,9 @@ function chooseChapter(n){
  const chosen=grader.selectChapter(n);if(!chosen)return;
  bank=chosen;
  try{state=grader.restore(JSON.parse(localStorage.getItem(storageKey())||"null"))}catch(err){state=grader.blank()}
- activeFilter="all";activeType="Questions";activeId="Q1";searchTerm="";reportOpen=false;render();
+ activeFilter="all";activeType="Questions";activeId="Q1";searchTerm="";reportOpen=false;
+ if(typeof location!=="undefined"&&location.hash!=="#chapter-"+bank.chapter)location.hash="#chapter-"+bank.chapter;
+ render();
 }
 const item=id=>bank.entries.find(e=>e.id===id),group=type=>bank.entries.filter(e=>e.type===type),answered=e=>(state.answers[e.id]||"").trim().length>0;
 function notify(s){const el=document.getElementById("textbookNotice");if(el)el.textContent=s}
@@ -55,7 +57,8 @@ const e=selected(),value=state.answers[e.id]||"",list=group(activeType),index=li
 if(!visible().some(x=>x.id===e.id))return '<section class="card tb-editor"><div class="tb-empty">目前篩選條件沒有選取的題目。請點左側其他題號或更換篩選。</div></section>';
 return '<section class="card tb-editor"><span class="pill">課堂 Ch'+bank.chapter+' · 課本 Ch'+(bank.textbookChapter||bank.chapter)+' · '+ESC(activeType)+' '+ESC(e.num)+'</span><span class="tb-page">　課本 p.'+e.sourcePage+'</span><h2>'+ESC(activeType)+' '+ESC(e.num)+'</h2>'+
 (e.adapted?'<div class="tb-warning">本個案背景為方便網頁閱讀的摘要整理，並非課本完整逐字原文；分析要求與題目一致。可對照原始課本 p.'+e.sourcePage+'。</div>':"")+
-(e.scenario?'<details class="tb-warning" open><summary>案例背景摘要（非課本逐字原文）</summary><p>'+ESC(e.scenario)+'</p></details>':'')+'<div class="tb-question">'+ESC(e.prompt)+'</div>'+
+(e.scenario?'<details class="tb-warning" open><summary>案例背景摘要（非課本逐字原文）</summary><p>'+ESC(e.scenario)+'</p></details>':'')+
+(e.note?'<div class="tb-warning"><strong>課本註記：</strong>'+ESC(e.note)+'</div>':'')+'<div class="tb-question">'+ESC(e.prompt)+'</div>'+
 '<div class="tb-field"><label for="tbAnswer">你的答案（中文／英文皆可）</label><textarea id="tbAnswer" maxlength="16000" spellcheck="true" placeholder="請用自己的話回答。包含核心概念、原因及必要的比較或例子…">'+ESC(value)+'</textarea><p class="tb-tip">文字自動保存在此瀏覽器。切換題目、關閉頁面後可以繼續。</p></div>'+
 '<div class="tb-actions"><button type="button" class="btn primary" data-action="check">自動批改這一題</button><button type="button" class="btn" data-action="erase">清空本題答案</button><button type="button" class="btn" data-action="report">查看整體進度</button></div>'+
 feedback(e)+
