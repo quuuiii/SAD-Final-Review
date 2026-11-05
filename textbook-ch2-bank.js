@@ -799,5 +799,588 @@ window.SAD_TEXTBOOK_CH2={chapter:2,textbookChapter:3,title:"Requirements Determi
   ],
   "manual": false,
   "sourcePage": 115
+ },
+ {
+  "id": "EA",
+  "num": "A",
+  "type": "Exercises",
+  "prompt": "Review the Amazon.com website. Develop the requirements definition for the site. Create a list of functional business requirements that the system meets. What different kinds of nonfunctional business requirements does the system meet? Provide examples for each kind.",
+  "criteria": [
+   [
+    "functional",
+    "功能"
+   ],
+   [
+    "nonfunctional",
+    "非功能"
+   ],
+   [
+    "performance",
+    "security",
+    "usability",
+    "效能",
+    "安全",
+    "易用"
+   ],
+   [
+    "amazon",
+    "e-commerce",
+    "電商"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 115,
+  "external": true
+ },
+ {
+  "id": "EB",
+  "num": "B",
+  "type": "Exercises",
+  "prompt": "Suppose you are going to build a new system that automates or improves the interview process for the career services department of your school. Develop a requirements definition for the new system. Include both functional and nonfunctional system requirements. Pretend you will release the system in three different versions. Prioritize the requirements accordingly.",
+  "criteria": [
+   [
+    "requirements definition",
+    "需求定義"
+   ],
+   [
+    "functional",
+    "功能"
+   ],
+   [
+    "nonfunctional",
+    "非功能"
+   ],
+   [
+    "version",
+    "release",
+    "版本"
+   ],
+   [
+    "priorit",
+    "優先"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 115,
+  "external": false
+ },
+ {
+  "id": "EC",
+  "num": "C",
+  "type": "Exercises",
+  "prompt": "Describe in very general terms the as-is business process for registering for classes at your university. Collaborate with another student in your class, and evaluate the process using problem analysis and root cause analysis. Based on your work, list some improvements that you have identified.",
+  "criteria": [
+   [
+    "as-is",
+    "現況"
+   ],
+   [
+    "registration",
+    "選課"
+   ],
+   [
+    "problem analysis",
+    "問題分析"
+   ],
+   [
+    "root cause",
+    "根因"
+   ],
+   [
+    "improvement",
+    "改善"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 116,
+  "external": false
+ },
+ {
+  "id": "ED",
+  "num": "D",
+  "type": "Exercises",
+  "prompt": "Describe in very general terms the as-is business process for applying for admission at your university. Collaborate with another student in your class, and evaluate the process using informal benchmarking. Based on your work, list some improvements that you have identified.",
+  "criteria": [
+   [
+    "as-is",
+    "現況"
+   ],
+   [
+    "admission",
+    "入學",
+    "招生"
+   ],
+   [
+    "benchmark",
+    "標竿"
+   ],
+   [
+    "improvement",
+    "改善"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 116,
+  "external": false
+ },
+ {
+  "id": "EE",
+  "num": "E",
+  "type": "Exercises",
+  "prompt": "Describe in very general terms the as-is business process for registering for classes at your university. Collaborate with another student in your class, and evaluate the process using activity elimination. Based on your work, list some improvements that you have identified.",
+  "criteria": [
+   [
+    "as-is",
+    "現況"
+   ],
+   [
+    "registration",
+    "選課"
+   ],
+   [
+    "activity elimination",
+    "活動消除"
+   ],
+   [
+    "unnecessary",
+    "waste",
+    "多餘",
+    "浪費"
+   ],
+   [
+    "improve",
+    "改善"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 116,
+  "external": false
+ },
+ {
+  "id": "EF",
+  "num": "F",
+  "type": "Exercises",
+  "prompt": "Suppose your university is having a dramatic increase in enrollment and is having difficulty finding enough seats in courses for students. Perform a technology analysis to identify new ways to help students complete their studies and graduate.",
+  "criteria": [
+   [
+    "enrollment",
+    "入學",
+    "學生"
+   ],
+   [
+    "seat",
+    "capacity",
+    "名額"
+   ],
+   [
+    "technology analysis",
+    "技術分析"
+   ],
+   [
+    "online",
+    "hybrid",
+    "線上",
+    "混合"
+   ],
+   [
+    "graduate",
+    "畢業"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 116,
+  "external": false
+ },
+ {
+  "id": "EG",
+  "num": "G",
+  "type": "Exercises",
+  "prompt": "Suppose you are the analyst charged with developing a new system for the university bookstore so that students can order books online and have them delivered to their dorms or off-campus housing. What requirements-gathering techniques will you use? Describe in detail how you would apply the techniques.",
+  "criteria": [
+   [
+    "bookstore",
+    "書店"
+   ],
+   [
+    "online",
+    "order",
+    "線上",
+    "訂購"
+   ],
+   [
+    "interview",
+    "訪談"
+   ],
+   [
+    "observation",
+    "questionnaire",
+    "觀察",
+    "問卷"
+   ],
+   [
+    "requirements",
+    "需求"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 116,
+  "external": false
+ },
+ {
+  "id": "EH",
+  "num": "H",
+  "type": "Exercises",
+  "prompt": "Suppose you are the analyst charged with developing a new system to help senior managers make better strategic decisions. What requirements-gathering techniques will you use? Describe in detail how you would apply the techniques.",
+  "criteria": [
+   [
+    "senior manager",
+    "executive",
+    "高階主管"
+   ],
+   [
+    "strategic",
+    "decision",
+    "策略",
+    "決策"
+   ],
+   [
+    "interview",
+    "jad",
+    "訪談"
+   ],
+   [
+    "document",
+    "observation",
+    "文件",
+    "觀察"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 116,
+  "external": false
+ },
+ {
+  "id": "EI",
+  "num": "I",
+  "type": "Exercises",
+  "prompt": "Find a partner and interview each other about what tasks each did in the last job you held (full-time, part-time, past, or current). If you haven’t worked before, then assume your job is being a student. Before you do this, develop a brief interview plan. After your partner interviews you, identify the type of interview, interview approach, and types of questions used.",
+  "criteria": [
+   [
+    "interview plan",
+    "訪談計畫"
+   ],
+   [
+    "question",
+    "問題"
+   ],
+   [
+    "structured",
+    "unstructured",
+    "結構式",
+    "非結構式"
+   ],
+   [
+    "top-down",
+    "bottom-up",
+    "由上而下",
+    "由下而上"
+   ],
+   [
+    "task",
+    "工作",
+    "任務"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 116,
+  "external": false
+ },
+ {
+  "id": "EJ",
+  "num": "J",
+  "type": "Exercises",
+  "prompt": "Find a group of students and run a sixty-minute JAD session on improving alumni relations at your university. Develop a brief JAD plan, select two techniques that will help identify improvements, and then develop an agenda. Conduct the session using the agenda, and write your post-session report.",
+  "criteria": [
+   [
+    "jad",
+    "joint application development"
+   ],
+   [
+    "alumni",
+    "校友"
+   ],
+   [
+    "agenda",
+    "議程"
+   ],
+   [
+    "technique",
+    "方法"
+   ],
+   [
+    "post-session",
+    "report",
+    "會後報告"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 116,
+  "external": false
+ },
+ {
+  "id": "EK",
+  "num": "K",
+  "type": "Exercises",
+  "prompt": "Find a questionnaire on the Web that has been created to capture customer information. Describe the purpose of the survey, the way questions are worded, and how the questions have been organized. How can it be improved? How will the responses be analyzed?",
+  "criteria": [
+   [
+    "questionnaire",
+    "問卷"
+   ],
+   [
+    "purpose",
+    "目的"
+   ],
+   [
+    "word",
+    "wording",
+    "措辭"
+   ],
+   [
+    "organization",
+    "順序",
+    "組織"
+   ],
+   [
+    "analysis",
+    "improve",
+    "分析",
+    "改善"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 116,
+  "external": true
+ },
+ {
+  "id": "EL",
+  "num": "L",
+  "type": "Exercises",
+  "prompt": "Develop a questionnaire that will help gather information regarding processes at a popular restaurant or the college cafeteria (e.g., ordering, customer service). Give the questionnaire to ten to fifteen students, analyze the responses, and write a brief report that describes the results.",
+  "criteria": [
+   [
+    "questionnaire",
+    "問卷"
+   ],
+   [
+    "restaurant",
+    "cafeteria",
+    "餐廳"
+   ],
+   [
+    "student",
+    "respondent",
+    "學生",
+    "受訪"
+   ],
+   [
+    "analysis",
+    "report",
+    "分析",
+    "報告"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 116,
+  "external": false
+ },
+ {
+  "id": "EM",
+  "num": "M",
+  "type": "Exercises",
+  "prompt": "Contact the career services department at your university, and find all the pertinent documents designed to help students find permanent and/or part-time jobs. Analyze the documents and write a brief report.",
+  "criteria": [
+   [
+    "career services",
+    "就業輔導",
+    "職涯"
+   ],
+   [
+    "document",
+    "文件"
+   ],
+   [
+    "job",
+    "part-time",
+    "工作",
+    "兼職"
+   ],
+   [
+    "analysis",
+    "report",
+    "分析",
+    "報告"
+   ]
+  ],
+  "manual": true,
+  "sourcePage": 116,
+  "external": false
+ },
+ {
+  "id": "M1",
+  "num": "1",
+  "type": "Minicases",
+  "sourcePage": 116,
+  "adapted": true,
+  "scenario": "State Firefighter’s Association（約 15,000 會員）以舊 DOS／dBase 3 系統處理會費與基金收支。Bob 和 Laura 在日常操作上遇到極慢的查詢、缺乏維護人員、報表排序異常、資料修改不便與紀錄遺失等問題。課本情境橫跨 pp.116–117；此處先提供中文情境摘要，原始頁面可核對細節。",
+  "prompt": "What requirements analysis strategy or strategies would you recommend for this situation? Explain your answer.",
+  "criteria": [
+   [
+    "problem analysis",
+    "問題分析"
+   ],
+   [
+    "root cause analysis",
+    "根因"
+   ],
+   [
+    "duration analysis",
+    "時間分析"
+   ],
+   [
+    "observation",
+    "interview",
+    "訪談",
+    "觀察"
+   ],
+   [
+    "recommend",
+    "improv",
+    "建議",
+    "改善"
+   ]
+  ],
+  "manual": true
+ },
+ {
+  "id": "M2",
+  "num": "2",
+  "type": "Minicases",
+  "sourcePage": 117,
+  "adapted": true,
+  "scenario": "ICAN Mutual 製造營運部主管 Joe Campbell 對原估計 13 個月的資訊系統專案感到不耐，認為分析工作耗時，想把建置提前。他要求專案經理 Brian Callahan 開會，主張兩週看看既有系統就夠。此處為課本 p.117 情境摘要。",
+  "prompt": "Because Brian has a little inside knowledge about Joe’s agenda for this meeting, he has been considering how to handle Joe. What do you suggest Brian tell Joe?",
+  "criteria": [
+   [
+    "analysis",
+    "requirement",
+    "分析",
+    "需求"
+   ],
+   [
+    "risk",
+    "rework",
+    "風險",
+    "重工"
+   ],
+   [
+    "schedule",
+    "cost",
+    "時程",
+    "成本"
+   ],
+   [
+    "stakeholder",
+    "joe",
+    "溝通",
+    "主管"
+   ],
+   [
+    "scope",
+    "plan",
+    "範圍",
+    "計畫"
+   ]
+  ],
+  "manual": true
+ },
+ {
+  "id": "M3",
+  "num": "3",
+  "type": "Minicases",
+  "sourcePage": 117,
+  "adapted": true,
+  "scenario": "Barry 是參與潛艇三明治連鎖店管理系統的程式設計師，初次執行門市觀察。因不熟路線而遲到，沒有先完成適當的授權安排，站在櫃檯後干擾員工作業，並且只觀察下午慢時段，忽略早晚尖峰、盤點與補貨工作。案例自 p.117 延續至 p.118；此處是情境摘要。",
+  "prompt": "Evaluate Barry’s conduct of the observation assignment.",
+  "criteria": [
+   [
+    "observation",
+    "觀察"
+   ],
+   [
+    "permission",
+    "authorization",
+    "授權",
+    "許可"
+   ],
+   [
+    "representative",
+    "peak",
+    "尖峰",
+    "代表性"
+   ],
+   [
+    "interference",
+    "bias",
+    "干擾",
+    "偏差"
+   ],
+   [
+    "report",
+    "evidence",
+    "紀錄",
+    "證據"
+   ]
+  ],
+  "manual": true
+ },
+ {
+  "id": "M4",
+  "num": "4",
+  "type": "Minicases",
+  "sourcePage": 118,
+  "adapted": true,
+  "scenario": "Anne 為新訂單輸入系統向三個城市約 50 名銷售人員發放問卷。她僅讓總部主管先測試，紙本要求一週回覆，前兩週僅收到 5 份；接著又寄全員電子郵件催填，導致部分已回覆者不滿。最後僅 14% 回收率。此處為課本 p.118 案例摘要。",
+  "prompt": "What suggestions do you have that could have improved Anne’s response rate to the questionnaire?",
+  "criteria": [
+   [
+    "response rate",
+    "回收率"
+   ],
+   [
+    "pilot",
+    "pretest",
+    "前測"
+   ],
+   [
+    "reminder",
+    "follow-up",
+    "提醒",
+    "追蹤"
+   ],
+   [
+    "short",
+    "clear",
+    "簡短",
+    "清楚"
+   ],
+   [
+    "incentive",
+    "anonymous",
+    "誘因",
+    "匿名"
+   ]
+  ],
+  "manual": true
  }
 ]};
