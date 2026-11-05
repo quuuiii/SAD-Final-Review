@@ -1,5 +1,5 @@
-/* Source: user-uploaded textbook Ch5 Structural Modeling pp.198–201.
- * Two full long-form minicases with their source subquestions. */
+/* Source user-uploaded textbook Chapter 5 pp.198–201 (course Ch4).
+ * Printed self-references are retained and flagged for inspection rather than rewritten. */
 window.SAD_TEXTBOOK_CH4={
  "chapter": 4,
  "textbookChapter": 5,
@@ -607,7 +607,8 @@ window.SAD_TEXTBOOK_CH4={
    ],
    "manual": true,
    "external": false,
-   "sourcePage": 200
+   "sourcePage": 200,
+   "note": "原書在這題的參照寫法可能存在自我引用或前後參照不一致；本站保留原文，建議與第 199–200 頁及上一題情境一起核對，不擅自改動練習編號。"
   },
   {
    "id": "EG",
@@ -646,7 +647,8 @@ window.SAD_TEXTBOOK_CH4={
    ],
    "manual": true,
    "external": false,
-   "sourcePage": 200
+   "sourcePage": 200,
+   "note": "原書在這題的參照寫法可能存在自我引用或前後參照不一致；本站保留原文，建議與第 199–200 頁及上一題情境一起核對，不擅自改動練習編號。"
   },
   {
    "id": "EH",
@@ -748,7 +750,8 @@ window.SAD_TEXTBOOK_CH4={
    ],
    "manual": true,
    "external": false,
-   "sourcePage": 200
+   "sourcePage": 200,
+   "note": "原書在這題的參照寫法可能存在自我引用或前後參照不一致；本站保留原文，建議與第 199–200 頁及上一題情境一起核對，不擅自改動練習編號。"
   },
   {
    "id": "EK",
@@ -813,7 +816,8 @@ window.SAD_TEXTBOOK_CH4={
    ],
    "manual": true,
    "external": false,
-   "sourcePage": 200
+   "sourcePage": 200,
+   "note": "原書在這題的參照寫法可能存在自我引用或前後參照不一致；本站保留原文，建議與第 199–200 頁及上一題情境一起核對，不擅自改動練習編號。"
   },
   {
    "id": "EM",
@@ -878,7 +882,8 @@ window.SAD_TEXTBOOK_CH4={
    ],
    "manual": true,
    "external": false,
-   "sourcePage": 200
+   "sourcePage": 200,
+   "note": "原書在這題的參照寫法可能存在自我引用或前後參照不一致；本站保留原文，建議與第 199–200 頁及上一題情境一起核對，不擅自改動練習編號。"
   },
   {
    "id": "EO",
@@ -942,7 +947,8 @@ window.SAD_TEXTBOOK_CH4={
    ],
    "manual": true,
    "external": false,
-   "sourcePage": 200
+   "sourcePage": 200,
+   "note": "原書在這題的參照寫法可能存在自我引用或前後參照不一致；本站保留原文，建議與第 199–200 頁及上一題情境一起核對，不擅自改動練習編號。"
   },
   {
    "id": "EQ",
@@ -1006,7 +1012,8 @@ window.SAD_TEXTBOOK_CH4={
    ],
    "manual": true,
    "external": false,
-   "sourcePage": 200
+   "sourcePage": 200,
+   "note": "原書在這題的參照寫法可能存在自我引用或前後參照不一致；本站保留原文，建議與第 199–200 頁及上一題情境一起核對，不擅自改動練習編號。"
   },
   {
    "id": "ES",
@@ -1070,7 +1077,8 @@ window.SAD_TEXTBOOK_CH4={
    ],
    "manual": true,
    "external": false,
-   "sourcePage": 200
+   "sourcePage": 200,
+   "note": "原書在這題的參照寫法可能存在自我引用或前後參照不一致；本站保留原文，建議與第 199–200 頁及上一題情境一起核對，不擅自改動練習編號。"
   },
   {
    "id": "EU",
@@ -1134,7 +1142,8 @@ window.SAD_TEXTBOOK_CH4={
    ],
    "manual": true,
    "external": false,
-   "sourcePage": 200
+   "sourcePage": 200,
+   "note": "原書在這題的參照寫法可能存在自我引用或前後參照不一致；本站保留原文，建議與第 199–200 頁及上一題情境一起核對，不擅自改動練習編號。"
   },
   {
    "id": "EW",
@@ -1198,7 +1207,8 @@ window.SAD_TEXTBOOK_CH4={
    ],
    "manual": true,
    "external": false,
-   "sourcePage": 200
+   "sourcePage": 200,
+   "note": "原書在這題的參照寫法可能存在自我引用或前後參照不一致；本站保留原文，建議與第 199–200 頁及上一題情境一起核對，不擅自改動練習編號。"
   },
   {
    "num": "1",
