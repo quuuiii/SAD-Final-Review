@@ -1230,6 +1230,382 @@ window.SAD_TEXTBOOK_CH3={
    "manual": true,
    "external": false,
    "sourcePage": 159
+  },
+  {
+   "id": "EM",
+   "num": "M",
+   "type": "Exercises",
+   "prompt": "Create a set of detailed use-case descriptions for the video system in exercise L.",
+   "criteria": [
+    [
+     "customer",
+     "會員"
+    ],
+    [
+     "trigger",
+     "觸發"
+    ],
+    [
+     "precondition",
+     "前置"
+    ],
+    [
+     "normal flow",
+     "正常流程"
+    ],
+    [
+     "alternate",
+     "overdue",
+     "例外",
+     "逾期"
+    ],
+    [
+     "postcondition",
+     "後置"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 159
+  },
+  {
+   "id": "EN",
+   "num": "N",
+   "type": "Exercises",
+   "prompt": "Perform a verification and validation walkthrough of the functional models of the video store system described in exercises L and M.",
+   "criteria": [
+    [
+     "verification",
+     "驗證"
+    ],
+    [
+     "validation",
+     "確效"
+    ],
+    [
+     "walkthrough",
+     "走查"
+    ],
+    [
+     "use case",
+     "使用案例"
+    ],
+    [
+     "consistency",
+     "一致性"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 159
+  },
+  {
+   "id": "EO",
+   "num": "O",
+   "type": "Exercises",
+   "prompt": "Draw a use-case diagram and a set of activity diagrams for a gym membership system. When members join the gym, they pay a fee for a certain length of time. Most memberships are for one year, but memberships as short as two months are available. Throughout the year, the gym offers a variety of discounts on their regular membership prices (e.g., two memberships for the price of one for Valentine’s day). It is common for members to pay different amounts for the same length of membership. The gym wants to mail out reminder letters to members asking them to renew their memberships one month before their memberships expire. Some members have become angry when asked to renew at a much higher rate than their original membership contract, so the club wants to track the prices paid so that the manager can override the regular prices with special prices when members are asked to renew. The system must track these new prices so that renewals can be processed accurately. One of the problems in the industry is the high turnover rate of members. Although some members remain active for many years, about half of the members do not renew their memberships. This is a major problem, because the gym spends a lot in advertising to attract each new member. The manager wants the system to track each time a member comes into the gym. The system will then identify the heavy users and generate a report so that the manager can ask them to renew their memberships early, perhaps offering them a reduced rate for early renewal. Likewise, the system should identify members who have not visited the gym in more than a month, so that the manager can call them and attempt to reinterest them in the gym.",
+   "criteria": [
+    [
+     "membership",
+     "會員"
+    ],
+    [
+     "discount",
+     "price",
+     "折扣",
+     "價格"
+    ],
+    [
+     "renew",
+     "續約"
+    ],
+    [
+     "visit",
+     "attendance",
+     "出入",
+     "到訪"
+    ],
+    [
+     "report",
+     "報表"
+    ],
+    [
+     "reminder",
+     "提醒"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 159
+  },
+  {
+   "id": "EP",
+   "num": "P",
+   "type": "Exercises",
+   "prompt": "Create a set of detailed use-case descriptions for the system in exercise O.",
+   "criteria": [
+    [
+     "member",
+     "會員"
+    ],
+    [
+     "trigger",
+     "觸發"
+    ],
+    [
+     "precondition",
+     "前置"
+    ],
+    [
+     "normal flow",
+     "正常流程"
+    ],
+    [
+     "alternate",
+     "postcondition",
+     "例外",
+     "後置"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 160
+  },
+  {
+   "id": "EQ",
+   "num": "Q",
+   "type": "Exercises",
+   "prompt": "Perform a verification and validation walkthrough of the functional models of the gym membership system described in exercises O and P.",
+   "criteria": [
+    [
+     "verification",
+     "驗證"
+    ],
+    [
+     "validation",
+     "確效"
+    ],
+    [
+     "walkthrough",
+     "走查"
+    ],
+    [
+     "membership",
+     "會員"
+    ],
+    [
+     "consistency",
+     "一致性"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 160
+  },
+  {
+   "id": "ER",
+   "num": "R",
+   "type": "Exercises",
+   "prompt": "Draw a use-case diagram and a set of activity diagrams for the following system. Picnics R Us (PRU) is a small catering firm with five employees. During a typical summer weekend, PRU caters fifteen picnics with twenty to fifty people each. The business has grown rapidly over the past year, and the owner wants to install a new computer system for managing the ordering and buying process. PRU has a set of ten standard menus. When potential customers call, the receptionist describes the menus to them. If the customer decides to book a picnic, the receptionist records the customer information (e.g., name, address, phone number) and the information about the picnic (e.g., place, date, time, which one of the standard menus, total price) on a contract. The customer is then faxed a copy of the contract and must sign and return it along with a deposit (often a credit card or by debit card) before the picnic is officially booked. The remaining money is collected when the picnic is delivered. Sometimes, the customer wants something special (e.g., birthday cake). In this case, the receptionist takes the information and gives it to the owner, who determines the cost; the receptionist then calls the customer back with the price information. Sometimes the customer accepts the price; other times, the customer requests some changes that have to go back to the owner for a new cost estimate. Each week, the owner looks through the picnics scheduled for that weekend and orders the supplies (e.g., plates) and food (e.g., bread, chicken) needed to make them. The owner would like to use the system for marketing as well. It should be able to track how customers learned about PRU and identify repeat customers, so that PRU can mail special offers to them. The owner also wants to track the picnics for which PRU sent a contract, but the customer never signed the contract and actually booked a picnic.",
+   "criteria": [
+    [
+     "customer",
+     "顧客"
+    ],
+    [
+     "contract",
+     "合約"
+    ],
+    [
+     "deposit",
+     "訂金"
+    ],
+    [
+     "menu",
+     "菜單"
+    ],
+    [
+     "special",
+     "custom",
+     "客製"
+    ],
+    [
+     "supplies",
+     "materials",
+     "採購",
+     "物料"
+    ],
+    [
+     "marketing",
+     "行銷"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 160
+  },
+  {
+   "id": "ES",
+   "num": "S",
+   "type": "Exercises",
+   "prompt": "Create a set of detailed use-case descriptions for the system in exercise R.",
+   "criteria": [
+    [
+     "customer",
+     "顧客"
+    ],
+    [
+     "contract",
+     "合約"
+    ],
+    [
+     "trigger",
+     "觸發"
+    ],
+    [
+     "normal flow",
+     "流程"
+    ],
+    [
+     "alternate",
+     "例外"
+    ],
+    [
+     "postcondition",
+     "後置"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 160
+  },
+  {
+   "id": "ET",
+   "num": "T",
+   "type": "Exercises",
+   "prompt": "Perform a verification and validation walkthrough of the functional models of the catering system described in exercises R and S.",
+   "criteria": [
+    [
+     "verification",
+     "驗證"
+    ],
+    [
+     "validation",
+     "確效"
+    ],
+    [
+     "walkthrough",
+     "走查"
+    ],
+    [
+     "catering",
+     "外燴"
+    ],
+    [
+     "consistency",
+     "一致性"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 160
+  },
+  {
+   "id": "EU",
+   "num": "U",
+   "type": "Exercises",
+   "prompt": "Draw a use-case diagram and a set of activity diagrams for the following system. Of-the-Month Club (OTMC) is an innovative young firm that sells memberships to people who have an interest in certain products. People pay membership fees for one year and each month receive a product by mail. For example, OTMC has a coffee-of-the-month club that sends members one pound of special coffee each month. OTMC currently has six memberships (coffee, wine, beer, cigars, flowers, and computer games), each of which costs a different amount. Customers usually belong to just one, but some belong to two or more. When people join OTMC, the telephone operator records the name, mailing address, phone number, e-mail address, credit-card information, start date, and membership service(s) (e.g., coffee). Some customers request a double or triple membership (e.g., two pounds of coffee, three cases of beer). The computer game membership operates a bit differently from the others. In this case, the member must also select the type of game (action, arcade, fantasy/science fiction, educational, etc.) and age level. OTMC is planning to greatly expand the number of memberships it offers (e.g., video games, movies, toys, cheese, fruit, and vegetables), so the system needs to accommodate this future expansion. OTMC is also planning to offer three-month and six-month memberships.",
+   "criteria": [
+    [
+     "membership",
+     "會員"
+    ],
+    [
+     "product",
+     "產品"
+    ],
+    [
+     "monthly",
+     "shipping",
+     "每月",
+     "寄送"
+    ],
+    [
+     "subscription",
+     "double",
+     "triple",
+     "訂閱",
+     "倍數"
+    ],
+    [
+     "computer game",
+     "game type",
+     "遊戲"
+    ],
+    [
+     "expansion",
+     "expand",
+     "擴充"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 160
+  },
+  {
+   "id": "EV",
+   "num": "V",
+   "type": "Exercises",
+   "prompt": "Create a set of detailed use-case descriptions for the system in exercise U.",
+   "criteria": [
+    [
+     "membership",
+     "會員"
+    ],
+    [
+     "trigger",
+     "觸發"
+    ],
+    [
+     "precondition",
+     "前置"
+    ],
+    [
+     "normal flow",
+     "流程"
+    ],
+    [
+     "alternate",
+     "例外"
+    ],
+    [
+     "postcondition",
+     "後置"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 161
+  },
+  {
+   "id": "EW",
+   "num": "W",
+   "type": "Exercises",
+   "prompt": "Perform a verification and validation walkthrough of the functional models of the Of-the-Month Club system described in exercises U and V.",
+   "criteria": [
+    [
+     "verification",
+     "驗證"
+    ],
+    [
+     "validation",
+     "確效"
+    ],
+    [
+     "walkthrough",
+     "走查"
+    ],
+    [
+     "membership",
+     "會員"
+    ],
+    [
+     "consistency",
+     "一致性"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 161
   }
  ]
 };
