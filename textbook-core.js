@@ -28,7 +28,7 @@ const value=normalizeText(answer),criteria=entry.criteria||[],textLength=value.r
 const criteriaResults=criteria.map(variants=>({concept:variants[0],matched:matches(value,variants),variants}));
 const matched=criteriaResults.filter(c=>c.matched).length;
 const tokenCount=value.split(/\s+/).filter(Boolean).length;
-const substantial=textLength>=25&&(tokenCount>=5||/[\u3400-\u9fff]/.test(value));
+const substantial=textLength>=25&&(tokenCount>=5||/[\u3400-\u9fff]/.test(value)||(criteria.length>=3&&matched===criteria.length));
 let score=criteria.length?Math.round(matched/criteria.length*100):0;
 if(!substantial)score=Math.min(score,35);
 if(textLength<12)score=Math.min(score,15);
