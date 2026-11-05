@@ -1,4 +1,5 @@
-/* User-supplied textbook Ch4 (pp.158-162), course Functional Modeling Ch3. */
+/* From supplied textbook Ch4 pp.158–162, course Functional Modeling Ch3.
+ * Full Minicases 1–2, joined across page breaks. */
 window.SAD_TEXTBOOK_CH3={
  "chapter": 3,
  "textbookChapter": 4,
@@ -1606,6 +1607,102 @@ window.SAD_TEXTBOOK_CH3={
    ],
    "manual": true,
    "sourcePage": 161
+  },
+  {
+   "id": "M1",
+   "num": "1",
+   "type": "Minicases",
+   "sourcePage": 161,
+   "manual": true,
+   "prompt": "Williams Specialty Company is a small printing and engraving organization. When Pat Williams, the owner, brought computers into the business office five years ago, the business was very small and very simple. Pat was able to use an inexpensive PC-based accounting system to handle the basic information-processing needs of the firm. As time has gone on, however, the business has grown and the work being performed has become significantly more complex. The simple accounting software still in use is no longer adequate to keep track of many of the company’s sophisticated deals and arrangements with its customers.\n\nPat has a staff of four people in the business office who are familiar with the intricacies of the company’s record-keeping requirements. Pat recently met with her staff to discuss her plan to hire an IS consulting firm to evaluate the organization’s information system needs and recommend a strategy for upgrading its computer system. The staff are excited about the prospect of a new system, because the current system causes them much annoyance. No one on the staff has ever done anything like this before, however, and they are a little wary of the consultants who will be conducting the project.\n\nAssume that you are a systems analyst on the consulting team assigned to the Williams Specialty Co. engagement. At your first meeting with the Williams staff, you want to be sure that they understand the work that your team will be performing and how they will participate in that work.\n\na. Explain, in clear, nontechnical terms, the goals of the analysis of the project.\n\nb. Explain, in clear, nontechnical terms, how functional models will be used by the project team to model the identified business processes. Explain what these models are, what they represent in the system, and how they will be used by the team.",
+   "criteria": [
+    [
+     "analysis",
+     "requirements",
+     "需求",
+     "分析"
+    ],
+    [
+     "business process",
+     "業務流程"
+    ],
+    [
+     "use case",
+     "使用案例"
+    ],
+    [
+     "activity diagram",
+     "活動圖"
+    ],
+    [
+     "stakeholder",
+     "participation",
+     "員工",
+     "參與"
+    ],
+    [
+     "clear",
+     "nontechnical",
+     "白話",
+     "清楚"
+    ]
+   ]
+  },
+  {
+   "id": "M2",
+   "num": "2",
+   "type": "Minicases",
+   "sourcePage": 161,
+   "manual": true,
+   "prompt": "Professional and Scientific Staff Management (PSSM) is a unique type of temporary staffing agency. Many organizations today hire highly skilled technical employees on a short-term, temporary basis to assist with special projects or to provide a needed technical skill. PSSM negotiates contracts with its client companies in which it agrees to provide temporary staff in specific job categories for a specified cost. For example, PSSM has a contract with an oil and gas exploration company in which it agrees to supply geologists with at least a master’s degree for $5,000 per week. PSSM has contracts with a wide range of companies and can place almost any type of professional or scientific staff members, from computer programmers to geologists to astrophysicists.\n\nWhen a PSSM client company determines that it will need a temporary professional or scientific employee, it issues a staffing request against the contract it had previously negotiated with PSSM. When PSSM’s contract manager receives a staffing request, the contract number referenced on the staffing request is entered into the contract database. Using information from the database, the contract manager reviews the terms and conditions of the contract and determines whether the staffing request is valid. The staffing request is valid if the contract has not expired, the type of professional or scientific employee requested is listed on the original contract, and the requested fee falls within the negotiated fee range. If the staffing request is not valid, the contract manager sends the staffing request back to the client with a letter stating why the staffing request cannot be filled, and a copy of the letter is filed. If the staffing request is valid, the contract manager enters the staffing request into the staffing request database as an outstanding staffing request. The staffing request is then sent to the PSSM placement department.\n\nIn the placement department, the type of staff member, experience, and qualifications requested on the staffing request are checked against the database of available professional and scientific staff. If a qualified individual is found, he or she is marked “reserved” in the staff database. If a qualified individual cannot be found in the database or is not immediately available, the placement department creates a memo that explains the inability to meet the staffing request and attaches it to the staffing request. All staffing requests are then sent to the arrangements department.\n\nIn the arrangements department, the prospective temporary employee is contacted and asked to agree to the placement. After the placement details have been worked out and agreed to, the staff member is marked “placed” in the staff database. A copy of the staffing request and a bill for the placement fee is sent to the client. Finally, the staffing request, the “unable-to-fill” memo (if any), and a copy of the placement fee bill are sent to the contract manager. If the staffing request was filled, the contract manager closes the open staffing request in the staffing request database. If the staffing request could not be filled, the client is notified. The staffing request, placement fee bill, and unable-to-fill memo are then filed in the contract office.\n\na. Create a use-case diagram for the system described here.\n\nb. Create a set of activity diagrams for the business processes described here.\n\nc. For each major use case identified in the use-case diagram, develop both an overview and a detail use-case description.\n\nd. Verify and validate the functional models.",
+   "criteria": [
+    [
+     "client",
+     "客戶"
+    ],
+    [
+     "contract",
+     "合約"
+    ],
+    [
+     "staffing request",
+     "需求單"
+    ],
+    [
+     "valid",
+     "expiration",
+     "資格",
+     "有效"
+    ],
+    [
+     "placement",
+     "reserved",
+     "placed",
+     "派遣",
+     "保留",
+     "安置"
+    ],
+    [
+     "use case",
+     "使用案例"
+    ],
+    [
+     "activity diagram",
+     "活動圖"
+    ],
+    [
+     "overview",
+     "detail",
+     "概觀",
+     "詳細"
+    ],
+    [
+     "verification",
+     "validation",
+     "驗證",
+     "確效"
+    ]
+   ]
   }
  ]
 };
