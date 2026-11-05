@@ -1,7 +1,7 @@
 /* Local-only textbook workbook. Rubric scoring checks terms, not essay meaning. */
 (function(){
 "use strict";
-const chapters={1:window.SAD_TEXTBOOK_CH1,2:window.SAD_TEXTBOOK_CH2,3:window.SAD_TEXTBOOK_CH3,4:window.SAD_TEXTBOOK_CH4};
+const chapters={1:window.SAD_TEXTBOOK_CH1,2:window.SAD_TEXTBOOK_CH2,3:window.SAD_TEXTBOOK_CH3,4:window.SAD_TEXTBOOK_CH4,5:window.SAD_TEXTBOOK_CH5};
 let bank=chapters[1];
 if(!bank||!Array.isArray(bank.entries))return;
 function selectChapter(ch){
