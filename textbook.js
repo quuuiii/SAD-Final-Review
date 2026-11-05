@@ -12,7 +12,9 @@ function chooseChapter(n){
  const chosen=grader.selectChapter(n);if(!chosen)return;
  bank=chosen;
  try{state=grader.restore(JSON.parse(localStorage.getItem(storageKey())||"null"))}catch(err){state=grader.blank()}
- activeFilter="all";activeType="Questions";activeId="Q1";searchTerm="";reportOpen=false;render();
+ activeFilter="all";activeType="Questions";activeId="Q1";searchTerm="";reportOpen=false;
+ if(typeof location!=="undefined"&&location.hash!=="#chapter-"+bank.chapter)location.hash="#chapter-"+bank.chapter;
+ render();
 }
 const item=id=>bank.entries.find(e=>e.id===id),group=type=>bank.entries.filter(e=>e.type===type),answered=e=>(state.answers[e.id]||"").trim().length>0;
 function notify(s){const el=document.getElementById("textbookNotice");if(el)el.textContent=s}
@@ -23,8 +25,8 @@ function selected(){return item(activeId)||bank.entries[0]}
 function home(){
 const s=grader.statistics(state);
 const chapter=bank.chapter,textbookChapter=bank.textbookChapter||chapter;
-const chapterNav='<div class="tb-chapter-tabs" role="group" aria-label="選擇課本章節">'+Object.values(grader.chapters).map(c=>'<button type="button" class="tb-tab '+(c.chapter===chapter?'active':'')+'" data-chapter="'+c.chapter+'">'+('第'+(['一','二','三'][c.chapter-1]||c.chapter)+'組 · 課本 Ch'+(c.textbookChapter||c.chapter))+'</button>').join("")+'</div>';
-return chapterNav+'<section class="tb-hero"><div><span class="eyebrow">COURSE CH'+chapter+' · TEXTBOOK CH'+textbookChapter+'</span><h1>'+('第'+(['一','二','三'][chapter-1]||chapter)+'組')+'課本題庫<br>英文申論與重點批改</h1><p>'+ESC(bank.title)+'<br>Questions 1–'+bank.entries.filter(x=>x.type==="Questions").length+'、Exercises A–'+(chapter===1?'R':chapter===2?'M':'W')+'、Minicases 1–'+bank.entries.filter(x=>x.type==="Minicases").length+'。'+(chapter===2?'此處是課堂 Ch2，原書標示 Chapter 3（pp.115–118）。':chapter===3?'此處是課堂 Ch3，原書標示 Chapter 4（pp.158–162）。':'')+'保留原本題號及頁碼。</p><div class="actions"><a class="btn" href="learn.html#chapter-'+chapter+'">回 Ch'+chapter+' 自學課</a><a class="btn" href="index.html">整合教材</a></div></div><aside class="tb-hero-summary"><span class="eyebrow">PROGRESS</span><strong>'+s.answered+' / '+s.total+'</strong><p>已作答題數</p><div class="progress"><i style="width:'+Math.round(s.answered/s.total*100)+'%"></i></div><p>已執行概念檢查：'+s.checked+' 題</p></aside></section>'+
+const chapterNav='<div class="tb-chapter-tabs" role="group" aria-label="選擇課本章節">'+Object.values(grader.chapters).map(c=>'<button type="button" class="tb-tab '+(c.chapter===chapter?'active':'')+'" data-chapter="'+c.chapter+'">'+('第'+(['一','二','三','四'][c.chapter-1]||c.chapter)+'組 · 課本 Ch'+(c.textbookChapter||c.chapter))+'</button>').join("")+'</div>';
+return chapterNav+'<section class="tb-hero"><div><span class="eyebrow">COURSE CH'+chapter+' · TEXTBOOK CH'+textbookChapter+'</span><h1>'+('第'+(['一','二','三','四'][chapter-1]||chapter)+'組')+'課本題庫<br>英文申論與重點批改</h1><p>'+ESC(bank.title)+'<br>Questions 1–'+bank.entries.filter(x=>x.type==="Questions").length+'、Exercises A–'+(chapter===1?'R':chapter===2?'M':chapter===3?'W':'X')+'、Minicases 1–'+bank.entries.filter(x=>x.type==="Minicases").length+'。'+(chapter===2?'此處是課堂 Ch2，原書標示 Chapter 3（pp.115–118）。':chapter===3?'此處是課堂 Ch3，原書標示 Chapter 4（pp.158–162）。':chapter===4?'此處是課堂 Ch4，原書標示 Chapter 5（pp.198–201）。':'')+'保留原本題號及頁碼。</p><div class="actions"><a class="btn" href="learn.html#chapter-'+chapter+'">回 Ch'+chapter+' 自學課</a><a class="btn" href="index.html">整合教材</a></div></div><aside class="tb-hero-summary"><span class="eyebrow">PROGRESS</span><strong>'+s.answered+' / '+s.total+'</strong><p>已作答題數</p><div class="progress"><i style="width:'+Math.round(s.answered/s.total*100)+'%"></i></div><p>已執行概念檢查：'+s.checked+' 題</p></aside></section>'+
 '<section class="tb-summary">'+TYPES.map(t=>{const d=s.sections[t];return '<div class="card"><strong>'+d.answered+' / '+d.total+'</strong><span>'+ESC(LABELS[t])+' · 已作答</span></div>'}).join("")+'</section>'+
 '<div class="tb-warning"><strong>自動批改範圍：</strong>此處以你答案中出現的關鍵概念，計算「概念涵蓋率」並提醒遺漏處；它無法可靠判定申論論證是否正確、是否有矛盾或引用是否真實。<strong>Exercises／Minicases、觀點題與研究題一律需要人工複核。</strong> 文字過短也會被標示。這不是教授給的分數或標準答案。</div>'+
 '<div class="tb-toolbar" role="group" aria-label="題型切換">'+TYPES.map(t=>'<button type="button" class="tb-tab '+(activeType===t?"active":"")+'" data-type="'+t+'">'+ESC(LABELS[t])+'</button>').join("")+
@@ -55,7 +57,8 @@ const e=selected(),value=state.answers[e.id]||"",list=group(activeType),index=li
 if(!visible().some(x=>x.id===e.id))return '<section class="card tb-editor"><div class="tb-empty">目前篩選條件沒有選取的題目。請點左側其他題號或更換篩選。</div></section>';
 return '<section class="card tb-editor"><span class="pill">課堂 Ch'+bank.chapter+' · 課本 Ch'+(bank.textbookChapter||bank.chapter)+' · '+ESC(activeType)+' '+ESC(e.num)+'</span><span class="tb-page">　課本 p.'+e.sourcePage+'</span><h2>'+ESC(activeType)+' '+ESC(e.num)+'</h2>'+
 (e.adapted?'<div class="tb-warning">本個案背景為方便網頁閱讀的摘要整理，並非課本完整逐字原文；分析要求與題目一致。可對照原始課本 p.'+e.sourcePage+'。</div>':"")+
-(e.scenario?'<details class="tb-warning" open><summary>案例背景摘要（非課本逐字原文）</summary><p>'+ESC(e.scenario)+'</p></details>':'')+'<div class="tb-question">'+ESC(e.prompt)+'</div>'+
+(e.scenario?'<details class="tb-warning" open><summary>案例背景摘要（非課本逐字原文）</summary><p>'+ESC(e.scenario)+'</p></details>':'')+
+(e.note?'<div class="tb-warning"><strong>課本註記：</strong>'+ESC(e.note)+'</div>':'')+'<div class="tb-question">'+ESC(e.prompt)+'</div>'+
 '<div class="tb-field"><label for="tbAnswer">你的答案（中文／英文皆可）</label><textarea id="tbAnswer" maxlength="16000" spellcheck="true" placeholder="請用自己的話回答。包含核心概念、原因及必要的比較或例子…">'+ESC(value)+'</textarea><p class="tb-tip">文字自動保存在此瀏覽器。切換題目、關閉頁面後可以繼續。</p></div>'+
 '<div class="tb-actions"><button type="button" class="btn primary" data-action="check">自動批改這一題</button><button type="button" class="btn" data-action="erase">清空本題答案</button><button type="button" class="btn" data-action="report">查看整體進度</button></div>'+
 feedback(e)+
@@ -97,6 +100,6 @@ if(ev.target.id==="tbAnswer"){grader.saveAnswer(state,activeId,ev.target.value);
 if(ev.target.id==="tbSearch"){searchTerm=ev.target.value;const focus=ev.target.selectionStart;render();const search=document.getElementById("tbSearch");if(search){search.focus();search.setSelectionRange(focus,focus)}return}
 });
 document.addEventListener("change",ev=>{if(ev.target.id==="tbFilter"){activeFilter=ev.target.value;let list=visible();if(list.length)activeId=list[0].id;render()}});
-if(typeof location!=="undefined"&&/^#chapter-[23]$/.test(location.hash||""))chooseChapter(Number(location.hash.slice(-1)));else render();
+if(typeof location!=="undefined"&&/^#chapter-[234]$/.test(location.hash||""))chooseChapter(Number(location.hash.slice(-1)));else render();
 window.SAD_TEXTBOOK_TEST={getState:()=>JSON.parse(JSON.stringify(state)),getHtml:()=>app.innerHTML,choose,chooseType,chooseChapter,getChapter:()=>bank.chapter,check:id=>{const o=grader.check(state,id);save();render();return o},answer:(id,v)=>{grader.saveAnswer(state,id,v);save();render()},getStatistics:()=>grader.statistics(state)};
 })();
