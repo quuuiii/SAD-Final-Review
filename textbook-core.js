@@ -1,8 +1,14 @@
 /* Local-only textbook workbook. Rubric scoring checks terms, not essay meaning. */
 (function(){
 "use strict";
-const bank=window.SAD_TEXTBOOK_CH1;
+const chapters={1:window.SAD_TEXTBOOK_CH1,2:window.SAD_TEXTBOOK_CH2};
+let bank=chapters[1];
 if(!bank||!Array.isArray(bank.entries))return;
+function selectChapter(ch){
+ const next=chapters[Number(ch)];
+ if(!next||!Array.isArray(next.entries))return null;
+ bank=next;window.SAD_TEXTBOOK_ENGINE.bank=bank;return bank;
+}
 const normalizeText=s=>String(s??"").normalize("NFKC").toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();
 const words=source=>normalizeText(source).replace(/[^a-z0-9\u3400-\u9fff ]/g," ");
 const safe=s=>String(s??"").slice(0,16000);
@@ -71,5 +77,5 @@ const answer=(state.answers[id]||"").trim();
 if(!answer)return {score:0,status:"empty",provisional:true};
 state.checks[id]={answer,checkedAt:now};return grade(entry,answer);
 }
-window.SAD_TEXTBOOK_ENGINE={bank,grade,matches,blank,restore,getGrade,statistics,saveAnswer,check};
+window.SAD_TEXTBOOK_ENGINE={bank,chapters,selectChapter,grade,matches,blank,restore,getGrade,statistics,saveAnswer,check};
 })();
