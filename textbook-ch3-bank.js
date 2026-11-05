@@ -1,5 +1,4 @@
-/* Source: user-uploaded textbook Ch4 (pp.158-162), course Functional Modeling Ch3.
- * Exercise and case grading is provisional; not an official answer key. */
+/* User-supplied textbook Ch4 (pp.158-162), course Functional Modeling Ch3. */
 window.SAD_TEXTBOOK_CH3={
  "chapter": 3,
  "textbookChapter": 4,
@@ -813,6 +812,424 @@ window.SAD_TEXTBOOK_CH3={
    ],
    "manual": true,
    "sourcePage": 158
+  },
+  {
+   "id": "EA",
+   "num": "A",
+   "type": "Exercises",
+   "prompt": "Investigate the UML website at the Object Management Group (www.uml.org). Write a paragraph news brief on the current state of UML (e.g., the current version and when it will be released, future improvements).",
+   "criteria": [
+    [
+     "uml"
+    ],
+    [
+     "omg",
+     "object management group"
+    ],
+    [
+     "version",
+     "release",
+     "版本"
+    ],
+    [
+     "future",
+     "improvement",
+     "未來",
+     "改善"
+    ]
+   ],
+   "manual": true,
+   "external": true,
+   "sourcePage": 158
+  },
+  {
+   "id": "EB",
+   "num": "B",
+   "type": "Exercises",
+   "prompt": "Investigate the Object Management Group. Write a brief memo describing what it is, its purpose, and its influence on UML and the object approach to systems development. (Hint: A good resource is www.omg.org.)",
+   "criteria": [
+    [
+     "omg",
+     "object management group"
+    ],
+    [
+     "standard",
+     "標準"
+    ],
+    [
+     "uml"
+    ],
+    [
+     "object-oriented",
+     "物件導向"
+    ]
+   ],
+   "manual": true,
+   "external": true,
+   "sourcePage": 158
+  },
+  {
+   "id": "EC",
+   "num": "C",
+   "type": "Exercises",
+   "prompt": "Draw a use-case diagram and a set of activity diagrams for the process of buying glasses from the viewpoint of the patient. The first step is to see an eye doctor who will give you a prescription. Once you have a prescription, you go to an optical dispensary, where you select your frames and place the order for your glasses. Once the glasses have been made, you return to the store for a fitting and pay for the glasses.",
+   "criteria": [
+    [
+     "patient",
+     "病患"
+    ],
+    [
+     "eye doctor",
+     "prescription",
+     "處方",
+     "醫師"
+    ],
+    [
+     "optical",
+     "frames",
+     "鏡框"
+    ],
+    [
+     "fitting",
+     "payment",
+     "試戴",
+     "付款"
+    ],
+    [
+     "use case",
+     "activity",
+     "使用案例",
+     "活動"
+    ]
+   ],
+   "manual": true,
+   "external": false,
+   "sourcePage": 158
+  },
+  {
+   "id": "ED",
+   "num": "D",
+   "type": "Exercises",
+   "prompt": "Create a set of detailed use-case descriptions for the process of buying glasses in exercise C.",
+   "criteria": [
+    [
+     "actor",
+     "病患",
+     "角色"
+    ],
+    [
+     "trigger",
+     "觸發"
+    ],
+    [
+     "precondition",
+     "前置條件"
+    ],
+    [
+     "normal flow",
+     "正常流程"
+    ],
+    [
+     "alternate",
+     "postcondition",
+     "例外",
+     "後置條件"
+    ]
+   ],
+   "manual": true,
+   "external": false,
+   "sourcePage": 158
+  },
+  {
+   "id": "EE",
+   "num": "E",
+   "type": "Exercises",
+   "prompt": "Draw a use-case diagram and a set of activity diagrams for the following doctor’s office system. Whenever new patients are seen for the first time, they complete a patient information form that asks their name, address, phone number, and brief medical history, which are stored in the patient information file. When a patient calls to schedule a new appointment or change an existing appointment, the receptionist checks the appointment file for an available time. Once a good time is found for the patient, the appointment is scheduled. If the patient is a new patient, an incomplete entry is made in the patient’s file; the full information will be collected when the patient arrives for the appointment. Because appointments are often made far in advance, the receptionist usually mails a reminder postcard to each patient two weeks before the appointment.",
+   "criteria": [
+    [
+     "patient",
+     "病患"
+    ],
+    [
+     "receptionist",
+     "櫃台"
+    ],
+    [
+     "appointment",
+     "預約"
+    ],
+    [
+     "medical history",
+     "patient information",
+     "病歷",
+     "資料"
+    ],
+    [
+     "reminder",
+     "提醒"
+    ],
+    [
+     "use case",
+     "activity",
+     "使用案例",
+     "活動"
+    ]
+   ],
+   "manual": true,
+   "external": false,
+   "sourcePage": 159
+  },
+  {
+   "id": "EF",
+   "num": "F",
+   "type": "Exercises",
+   "prompt": "Create a set of detail use-case descriptions for the dentist’s office system in exercise E.",
+   "criteria": [
+    [
+     "use case",
+     "使用案例"
+    ],
+    [
+     "actor",
+     "角色"
+    ],
+    [
+     "trigger",
+     "觸發"
+    ],
+    [
+     "normal flow",
+     "正常流程"
+    ],
+    [
+     "alternate",
+     "postcondition",
+     "例外",
+     "後置"
+    ]
+   ],
+   "manual": true,
+   "external": false,
+   "sourcePage": 159
+  },
+  {
+   "id": "EG",
+   "num": "G",
+   "type": "Exercises",
+   "prompt": "Draw a use-case diagram and a set of activity diagrams for an online university registration system. The system should enable the staff of each academic department to examine the courses offered by their department, add and remove courses, and change the information about them (e.g., the maximum number of students permitted). It should permit students to examine currently available courses, add and drop courses to and from their schedules, and examine the courses for which they are enrolled. Department staff should be able to print a variety of reports about the courses and the students enrolled in them. The system should ensure that no student takes too many courses and that students who have any unpaid fees are not permitted to register (assume that fees data are maintained by the university’s financial office, which the registration system accesses but does not change).",
+   "criteria": [
+    [
+     "student",
+     "學生"
+    ],
+    [
+     "department",
+     "staff",
+     "系所",
+     "行政"
+    ],
+    [
+     "registration",
+     "courses",
+     "選課",
+     "課程"
+    ],
+    [
+     "fee",
+     "financial",
+     "欠費",
+     "財務"
+    ],
+    [
+     "capacity",
+     "maximum",
+     "限制",
+     "名額"
+    ],
+    [
+     "report",
+     "報表"
+    ]
+   ],
+   "manual": true,
+   "external": false,
+   "sourcePage": 159
+  },
+  {
+   "id": "EH",
+   "num": "H",
+   "type": "Exercises",
+   "prompt": "Create a set of detailed use-case descriptions for the online university registration system in exercise G.",
+   "criteria": [
+    [
+     "actor",
+     "學生",
+     "系所"
+    ],
+    [
+     "trigger",
+     "觸發"
+    ],
+    [
+     "precondition",
+     "前置條件"
+    ],
+    [
+     "normal flow",
+     "流程"
+    ],
+    [
+     "alternate",
+     "例外"
+    ],
+    [
+     "postcondition",
+     "後置"
+    ]
+   ],
+   "manual": true,
+   "external": false,
+   "sourcePage": 159
+  },
+  {
+   "id": "EI",
+   "num": "I",
+   "type": "Exercises",
+   "prompt": "Draw a use-case diagram and a set of activity diagrams for the following system. A Real Estate Inc. (AREI) sells houses. People who want to sell their houses sign a contract with AREI and provide information on their house. This information is kept in a database by AREI, and a subset of this information is sent to the citywide multiple-listing service used by all real estate agents. AREI works with two types of potential buyers. Some buyers have an interest in one specific house. In this case, AREI prints information from its database, which the real estate agent uses to help show the house to the buyer (a process beyond the scope of the system to be modeled). Other buyers seek AREI’s advice in finding a house that meets their needs. In this case, the buyer completes a buyer information form that is entered into a buyer database, and AREI real estate agents use its information to search AREI’s database and the multiple-listing service for houses that meet their needs. The results of these searches are printed and used to help the real estate agent show houses to the buyer.",
+   "criteria": [
+    [
+     "seller",
+     "buyer",
+     "賣方",
+     "買方"
+    ],
+    [
+     "contract",
+     "契約"
+    ],
+    [
+     "listing",
+     "房源"
+    ],
+    [
+     "database",
+     "資料庫"
+    ],
+    [
+     "agent",
+     "房仲"
+    ],
+    [
+     "search",
+     "搜尋"
+    ]
+   ],
+   "manual": true,
+   "external": false,
+   "sourcePage": 159
+  },
+  {
+   "id": "EJ",
+   "num": "J",
+   "type": "Exercises",
+   "prompt": "Create a set of detailed use-case descriptions for the real estate system in exercise I.",
+   "criteria": [
+    [
+     "use case",
+     "使用案例"
+    ],
+    [
+     "seller",
+     "buyer",
+     "賣方",
+     "買方"
+    ],
+    [
+     "trigger",
+     "觸發"
+    ],
+    [
+     "normal flow",
+     "流程"
+    ],
+    [
+     "alternate",
+     "postcondition",
+     "例外",
+     "後置"
+    ]
+   ],
+   "manual": true,
+   "external": false,
+   "sourcePage": 159
+  },
+  {
+   "id": "EK",
+   "num": "K",
+   "type": "Exercises",
+   "prompt": "Perform a verification and validation walkthrough of the functional models of the real estate system described in exercises I and J.",
+   "criteria": [
+    [
+     "verification",
+     "驗證"
+    ],
+    [
+     "validation",
+     "確效"
+    ],
+    [
+     "walkthrough",
+     "走查"
+    ],
+    [
+     "use case",
+     "activity",
+     "使用案例",
+     "活動"
+    ],
+    [
+     "consistency",
+     "一致性"
+    ]
+   ],
+   "manual": true,
+   "external": false,
+   "sourcePage": 159
+  },
+  {
+   "id": "EL",
+   "num": "L",
+   "type": "Exercises",
+   "prompt": "Draw a use-case diagram and a set of activity diagrams for the following system. A Video Store (AVS) runs a series of fairly standard video stores. Before a video can be put on the shelf, it must be cataloged and entered into the video database. Every customer must have a valid AVS customer card in order to rent a video. Customers rent videos for three days at a time. Every time a customer rents a video, the system must ensure that he or she does not have any overdue videos. If so, the overdue videos must be returned and an overdue fee paid before customer can rent more videos. Likewise, if the customer has returned overdue videos but has not paid the overdue fee, the fee must be paid before new videos can be rented. Every morning, the store manager prints a report that lists overdue videos. If a video is two or more days overdue, the manager calls the customer to remind him or her to return the video. If a video is returned in damaged condition, the manager removes it from the video database and may sometimes charge the customer.",
+   "criteria": [
+    [
+     "video",
+     "影片"
+    ],
+    [
+     "customer card",
+     "會員卡"
+    ],
+    [
+     "rental",
+     "租借"
+    ],
+    [
+     "overdue",
+     "逾期"
+    ],
+    [
+     "fee",
+     "罰金"
+    ],
+    [
+     "damage",
+     "損壞"
+    ]
+   ],
+   "manual": true,
+   "external": false,
+   "sourcePage": 159
   }
  ]
 };
