@@ -55,3 +55,5 @@
 @media(max-width:930px){.tb-question-layout{grid-template-columns:1fr}.tb-list{position:static;max-height:none}.tb-numbers{grid-template-columns:repeat(10,minmax(0,1fr))}}
 @media(max-width:680px){.tb-hero{grid-template-columns:1fr;padding:22px}.tb-summary{grid-template-columns:1fr 1fr}.tb-editor{padding:16px}.tb-numbers{grid-template-columns:repeat(6,minmax(0,1fr))}.tb-question{font-size:15px}}
 @media print{.site-header,.footer,.tb-toolbar,.tb-list,.tb-actions,.tb-foot{display:none!important}.tb-question-layout{display:block}.tb-editor{border:0}.container{max-width:none}}
+
+.tb-chapter-tabs{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0 17px}.tb-chapter-tabs .tb-tab{border-radius:11px;padding:11px 15px;font-size:14px;font-weight:750}.tb-chapter-tabs .tb-tab.active{border-color:var(--accent);background:var(--tint);color:var(--accent)}
