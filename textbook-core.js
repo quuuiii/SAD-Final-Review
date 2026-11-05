@@ -13,6 +13,13 @@ const p=normalizeText(phrase),t=words(phrase).trim();
 if(!p)return false;
 if(/[\u3400-\u9fff]/.test(p))return v.includes(p);
 if(p.length<=3&&/^[a-z0-9]+$/.test(p))return new RegExp("(^|[^a-z0-9])"+p+"([^a-z0-9]|$)","i").test(v);
+if(/^[a-z]{4,}$/.test(p)){
+ const alternatives=[p];
+ if(p.endsWith("ies"))alternatives.push(p.slice(0,-3)+"y");
+ else if(p.endsWith("s")&&!p.endsWith("ss")&&!p.endsWith("sis"))alternatives.push(p.slice(0,-1));
+ if(!p.endsWith("s"))alternatives.push(p+"s");
+ return alternatives.some(a=>new RegExp("(^|[^a-z0-9])"+a+"([^a-z0-9]|$)","i").test(v));
+}
 return v.includes(p)||(t.length>3&&flat.includes(t));
 });
 }
