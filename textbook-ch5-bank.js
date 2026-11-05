@@ -1,5 +1,5 @@
-/* Source: textbook Ch6 Behavioral Modeling pp.236–238, user uploads. 
- * Exercises A–H retain cross-page continuations and original cross-references. */
+/* Textbook Ch6 Behavioral Modeling pp.236–238; includes full minicases that span pages.
+ * Each requires drawing/visual verification; keyword-based initial feedback is not official grading. */
 window.SAD_TEXTBOOK_CH5={
  "chapter": 5,
  "textbookChapter": 6,
@@ -1080,6 +1080,95 @@ window.SAD_TEXTBOOK_CH5={
    "manual": true,
    "sourcePage": 237,
    "note": "原書 Ch5 參照出現 Exercise Y；你目前上傳的 Ch5 頁面僅列至 X。本站照印刷原文呈現，請以課本為準。"
+  },
+  {
+   "num": "1",
+   "sourcePage": 237,
+   "manual": true,
+   "prompt": "Refer to the functional model (use-case diagram, activity diagrams, and use-case descriptions) you prepared for the Professional and Scientific Staff Management (PSSM) Minicase in Chapter 4. Based on your performance, PSSM was so satisfied that it wanted you to develop both the structural and behavioral models so that it could more fully understand both the interaction that would take place between the users and the system and the system itself in greater detail.\n\na. Create both CRC cards and a class diagram based on the functional models created in Chapter 4.\n\nb. Create a sequence and a communication diagram for each scenario of each use case identified in the functional model.\n\nc. Create a behavioral state machine for each of the complex classes in the class diagram.\n\nd. Perform a CRUDE analysis to show the interactivity of the objects in the system.\n\ne. Perform a verification and validation walkthrough of each model: functional, structural, and behavioral.",
+   "criteria": [
+    [
+     "pssm",
+     "staffing",
+     "派遣"
+    ],
+    [
+     "crc",
+     "class diagram",
+     "類別圖",
+     "責任"
+    ],
+    [
+     "sequence",
+     "循序"
+    ],
+    [
+     "communication",
+     "溝通"
+    ],
+    [
+     "state machine",
+     "狀態機"
+    ],
+    [
+     "crude",
+     "矩陣"
+    ],
+    [
+     "verification",
+     "validation",
+     "驗證",
+     "確效"
+    ]
+   ],
+   "id": "M1",
+   "type": "Minicases"
+  },
+  {
+   "num": "2",
+   "sourcePage": 238,
+   "manual": true,
+   "prompt": "Refer to the structural model (CRC cards and class diagram) that you created for the Holiday Travel Vehicles Minicase in Chapter 5. Based on your performance, Holiday Travel Vehicles was so satisfied that it wanted you to develop both the functional and behavioral models so that it could more fully understand both the interaction that would take place between the users and the system and the system itself in greater detail.\n\na. Based on the structural model you created in Chapter 5 and the problem description in Chapter 5, create a functional model (use-case diagram, activity diagrams, and use-case descriptions) for the business processes associated with the Holiday Travel Vehicles sales system.\n\nb. Create a sequence and a communication diagram for each scenario of each use case identified in the functional model.\n\nc. Create a behavioral state machine for each of the complex classes in the class diagram.\n\nd. Perform a CRUDE analysis to show the interactivity of the objects in the system.\n\ne. Perform a verification and validation walkthrough of each model: functional, structural, and behavioral.",
+   "criteria": [
+    [
+     "holiday travel",
+     "vehicle",
+     "車輛",
+     "汽車"
+    ],
+    [
+     "functional",
+     "use case",
+     "activity",
+     "功能",
+     "使用案例",
+     "活動"
+    ],
+    [
+     "sequence",
+     "循序"
+    ],
+    [
+     "communication",
+     "溝通"
+    ],
+    [
+     "state machine",
+     "狀態機"
+    ],
+    [
+     "crude",
+     "矩陣"
+    ],
+    [
+     "verification",
+     "validation",
+     "驗證",
+     "確效"
+    ]
+   ],
+   "id": "M2",
+   "type": "Minicases"
   }
  ]
 };
