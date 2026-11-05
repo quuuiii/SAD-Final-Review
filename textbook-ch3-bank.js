@@ -1,5 +1,5 @@
-/* From supplied textbook Ch4 pp.158–162, course Functional Modeling Ch3.
- * Full Minicases 1–2, joined across page breaks. */
+/* Source: user-uploaded textbook Ch4 (pp.158–162), course Functional Modeling Ch3.
+ * Includes source case text and transparent concept heuristics, not official solutions. */
 window.SAD_TEXTBOOK_CH3={
  "chapter": 3,
  "textbookChapter": 4,
@@ -18,19 +18,28 @@ window.SAD_TEXTBOOK_CH3={
     ],
     [
      "understand",
-     "理解"
+     "理解",
+     "understanding",
+     "understands"
     ],
     [
      "communicat",
      "stakeholder",
      "溝通",
-     "利害關係人"
+     "利害關係人",
+     "communication",
+     "communicate",
+     "communicating",
+     "stakeholders"
     ],
     [
      "improv",
      "requirements",
      "改善",
-     "需求"
+     "需求",
+     "improve",
+     "improvement",
+     "improving"
     ]
    ],
    "manual": false,
@@ -89,13 +98,17 @@ window.SAD_TEXTBOOK_CH3={
      "decompos",
      "subflow",
      "分解",
-     "子流程"
+     "子流程",
+     "decompose",
+     "decomposition"
     ],
     [
      "communication",
      "understand",
      "溝通",
-     "理解"
+     "理解",
+     "understanding",
+     "understands"
     ]
    ],
    "manual": false,
@@ -255,18 +268,25 @@ window.SAD_TEXTBOOK_CH3={
     [
      "iterat",
      "反覆",
-     "迭代"
+     "迭代",
+     "iteration",
+     "iterative",
+     "iterations"
     ],
     [
      "refin",
      "修正",
-     "精煉"
+     "精煉",
+     "refine",
+     "refinement",
+     "refining"
     ],
     [
      "feedback",
      "stakeholder",
      "回饋",
-     "利害關係"
+     "利害關係",
+     "stakeholders"
     ],
     [
      "requirements",
@@ -706,7 +726,8 @@ window.SAD_TEXTBOOK_CH3={
      "matrix",
      "traceability",
      "矩陣",
-     "追蹤"
+     "追蹤",
+     "traceable"
     ]
    ],
    "manual": false,
@@ -735,7 +756,8 @@ window.SAD_TEXTBOOK_CH3={
      "stakeholder",
      "review",
      "檢視",
-     "利害關係"
+     "利害關係",
+     "stakeholders"
     ]
    ],
    "manual": false,
@@ -802,7 +824,8 @@ window.SAD_TEXTBOOK_CH3={
      "consistency",
      "traceability",
      "一致性",
-     "追蹤"
+     "追蹤",
+     "traceable"
     ],
     [
      "verification",
@@ -1538,7 +1561,8 @@ window.SAD_TEXTBOOK_CH3={
     [
      "expansion",
      "expand",
-     "擴充"
+     "擴充",
+     "expandable"
     ]
    ],
    "manual": true,
@@ -1638,7 +1662,8 @@ window.SAD_TEXTBOOK_CH3={
      "stakeholder",
      "participation",
      "員工",
-     "參與"
+     "參與",
+     "stakeholders"
     ],
     [
      "clear",
