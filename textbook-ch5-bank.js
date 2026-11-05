@@ -1,5 +1,5 @@
-/* Source: supplied Chapter 6 Behavioral Modeling, pages 236-238.
- * Corresponding class/course chapter is Ch5. Automated concept coverage is not formal grading. */
+/* Source: textbook Ch6 Behavioral Modeling pp.236–238, user uploads. 
+ * Exercises A–H retain cross-page continuations and original cross-references. */
 window.SAD_TEXTBOOK_CH5={
  "chapter": 5,
  "textbookChapter": 6,
@@ -734,6 +734,352 @@ window.SAD_TEXTBOOK_CH5={
    ],
    "sourcePage": 236,
    "manual": true
+  },
+  {
+   "id": "EA",
+   "num": "A",
+   "type": "Exercises",
+   "prompt": "Think about sending a first-class letter to an international pen pal. Describe the process that the letter goes through to get from your initial creation of the letter to being read by your friend, from the letter’s perspective. Draw a behavioral state machine that depicts the states that the letter moves through.",
+   "criteria": [
+    [
+     "state",
+     "狀態"
+    ],
+    [
+     "draft",
+     "write",
+     "撰寫",
+     "草稿"
+    ],
+    [
+     "mail",
+     "post",
+     "寄送",
+     "郵寄"
+    ],
+    [
+     "transit",
+     "customs",
+     "運送",
+     "海關"
+    ],
+    [
+     "delivered",
+     "read",
+     "送達",
+     "閱讀"
+    ],
+    [
+     "transition",
+     "事件",
+     "轉換"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 236,
+   "note": ""
+  },
+  {
+   "id": "EB",
+   "num": "B",
+   "type": "Exercises",
+   "prompt": "Draw a behavioral state machine that describes the various states that a travel authorization can have through its approval process. A travel authorization form is used in most companies to approve travel expenses for employees. Typically, an employee fills out a blank form and sends it to his or her boss for a signature. If the amount is fairly small (<$300), then the boss signs the form and routes it to accounts payable to be input into the accounting system. The system cuts a check that is sent to the employee for the right amount, and after the check is cashed, the form is filed away with the canceled check. If the check is not cashed within 90 days, the travel form expires. When the amount of the travel voucher is a large amount (>$300), then the boss signs the form and sends it to the CFO, along with a paragraph explaining the purpose of the travel; the CFO signs the form and passes it along to accounts payable. Of course, the boss and the CFO can reject the travel authorization form if they do not feel that the expenses are reasonable. In this case, the employee can change the form to include more explanation or decide to pay the expenses.",
+   "criteria": [
+    [
+     "form",
+     "authorization",
+     "申請單"
+    ],
+    [
+     "boss",
+     "主管"
+    ],
+    [
+     "cfo",
+     "財務長"
+    ],
+    [
+     "amount",
+     "300",
+     "金額"
+    ],
+    [
+     "approved",
+     "rejected",
+     "核准",
+     "拒絕"
+    ],
+    [
+     "check",
+     "90 days",
+     "支票",
+     "90天"
+    ],
+    [
+     "guard",
+     "transition",
+     "條件",
+     "轉換"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 236,
+   "note": ""
+  },
+  {
+   "id": "EC",
+   "num": "C",
+   "type": "Exercises",
+   "prompt": "Think about the system that handles student admissions at your university. The primary function of the system should be able to track a student from the request for information through the admissions process until the student is either admitted to the school or rejected.\n\n1. Write a use-case description that can describe an Admit Student use case.\nAssume that applicants who are children of alumni are handled differently from other applicants. Also, assume that a generic Update Student Information use case is available for your system to use.\n\n2. Create a use-case diagram that includes all of the above use cases.\nAssume that an admissions form includes the contents of the form, SAT information, and references. Additional information is captured about children of alumni, such as their parent’s graduation year, contact information, and college major.\n\n3. Create a class diagram for the use cases identified with questions 1 and 2. Also, be sure to include the above information.\nAssume that a temporary student object is used by the system to hold information about people before they send in an admission form. After the form is sent in, these people are considered students.\n\n4. Create sequence diagrams for the scenarios of the above use cases.\n\n5. Create a communication diagram for the scenarios of the above use cases.\n\n6. Create a behavioral state machine to depict a person as he or she moves through the admissions process.\n\n7. Perform a CRUDE analysis to show the interactivity of the objects in the system.",
+   "criteria": [
+    [
+     "admit student",
+     "錄取"
+    ],
+    [
+     "alumni",
+     "校友"
+    ],
+    [
+     "use case",
+     "使用案例"
+    ],
+    [
+     "class diagram",
+     "類別圖"
+    ],
+    [
+     "sequence",
+     "循序"
+    ],
+    [
+     "communication",
+     "溝通"
+    ],
+    [
+     "state machine",
+     "狀態機"
+    ],
+    [
+     "crude",
+     "矩陣"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 236,
+   "note": ""
+  },
+  {
+   "id": "ED",
+   "num": "D",
+   "type": "Exercises",
+   "prompt": "For the A Real Estate Inc. problem in Chapters 4 (exercises I, J, and K) and 5 (exercises P and Q):\n\n1. Choose one use case and, for each scenario, create a sequence diagram.\n2. Create a communication diagram for each scenario of the use case chosen in Question 1.\n3. Create a behavioral state machine to depict one of the classes on the class diagram you created for Chapter 5, exercise P.\n4. Perform a CRUDE analysis to show the interactivity of the objects in the system.\n5. Perform a verification and validation walkthrough of the problem.",
+   "criteria": [
+    [
+     "real estate",
+     "房仲"
+    ],
+    [
+     "use case",
+     "使用案例"
+    ],
+    [
+     "sequence",
+     "循序"
+    ],
+    [
+     "communication",
+     "溝通"
+    ],
+    [
+     "state machine",
+     "狀態機"
+    ],
+    [
+     "crude",
+     "矩陣"
+    ],
+    [
+     "verification",
+     "validation",
+     "驗證",
+     "確效"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 237,
+   "note": ""
+  },
+  {
+   "id": "EE",
+   "num": "E",
+   "type": "Exercises",
+   "prompt": "For the A Video Store problem in Chapters 4 (exercises L, M, and N) and 5 (exercises R and S):\n\n1. Choose one use case and, for each scenario, create a sequence diagram.\n2. Create a communication diagram for each scenario of the use case chosen in Question 1.\n3. Create a behavioral state machine to depict one of the classes on the class diagram you created for Chapter 5, exercise R.\n4. Perform a CRUDE analysis to show the interactivity of the objects in the system.\n5. Perform a verification and validation walkthrough of the problem.",
+   "criteria": [
+    [
+     "video store",
+     "video",
+     "影音",
+     "租借"
+    ],
+    [
+     "use case",
+     "使用案例"
+    ],
+    [
+     "sequence",
+     "循序"
+    ],
+    [
+     "communication",
+     "溝通"
+    ],
+    [
+     "state machine",
+     "狀態機"
+    ],
+    [
+     "crude",
+     "矩陣"
+    ],
+    [
+     "verification",
+     "validation",
+     "驗證",
+     "確效"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 237,
+   "note": ""
+  },
+  {
+   "id": "EF",
+   "num": "F",
+   "type": "Exercises",
+   "prompt": "For the gym membership problem in Chapters 4 (exercises O, P, and Q) and 5 (exercises T and U):\n\n1. Choose one use case and, for each scenario, create a sequence diagram.\n2. Create a communication diagram for each scenario of the use case chosen in Question 1.\n3. Create a behavioral state machine to depict one of the classes on the class diagram you created for Chapter 5, exercise T.\n4. Perform a CRUDE analysis to show the interactivity of the objects in the system.\n5. Perform a verification and validation walkthrough of the problem.",
+   "criteria": [
+    [
+     "gym",
+     "membership",
+     "健身",
+     "會員"
+    ],
+    [
+     "use case",
+     "使用案例"
+    ],
+    [
+     "sequence",
+     "循序"
+    ],
+    [
+     "communication",
+     "溝通"
+    ],
+    [
+     "state machine",
+     "狀態機"
+    ],
+    [
+     "crude",
+     "矩陣"
+    ],
+    [
+     "verification",
+     "validation",
+     "驗證",
+     "確效"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 237,
+   "note": ""
+  },
+  {
+   "id": "EG",
+   "num": "G",
+   "type": "Exercises",
+   "prompt": "For the Picnics R Us problem in Chapters 4 (exercises R, S, and T) and 5 (exercises V and W):\n\n1. Choose one use case and, for each scenario, create a sequence diagram.\n2. Create a communication diagram for each scenario of the use case chosen in Question 1.\n3. Create a behavioral state machine to depict one of the classes on the class diagram you created for Chapter 5, exercise V.\n4. Perform a CRUDE analysis to show the interactivity of the objects in the system.\n5. Perform a verification and validation walkthrough of the problem.",
+   "criteria": [
+    [
+     "picnic",
+     "catering",
+     "外燴"
+    ],
+    [
+     "use case",
+     "使用案例"
+    ],
+    [
+     "sequence",
+     "循序"
+    ],
+    [
+     "communication",
+     "溝通"
+    ],
+    [
+     "state machine",
+     "狀態機"
+    ],
+    [
+     "crude",
+     "矩陣"
+    ],
+    [
+     "verification",
+     "validation",
+     "驗證",
+     "確效"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 237,
+   "note": ""
+  },
+  {
+   "id": "EH",
+   "num": "H",
+   "type": "Exercises",
+   "prompt": "For the Of-the-Month-Club problem in Chapters 4 (exercises U, V, and W) and 5 (exercises X and Y):\n\n1. Choose one use case and, for each scenario, create a sequence diagram.\n2. Create a communication diagram for each scenario of the use case chosen in Question 1.\n3. Create a behavioral state machine to depict one of the classes on the class diagram you created for Chapter 5, exercise X.\n4. Perform a CRUDE analysis to show the interactivity of the objects in the system.\n5. Perform a verification and validation walkthrough of the problem.",
+   "criteria": [
+    [
+     "of-the-month",
+     "club",
+     "subscription",
+     "訂閱"
+    ],
+    [
+     "use case",
+     "使用案例"
+    ],
+    [
+     "sequence",
+     "循序"
+    ],
+    [
+     "communication",
+     "溝通"
+    ],
+    [
+     "state machine",
+     "狀態機"
+    ],
+    [
+     "crude",
+     "矩陣"
+    ],
+    [
+     "verification",
+     "validation",
+     "驗證",
+     "確效"
+    ]
+   ],
+   "manual": true,
+   "sourcePage": 237,
+   "note": "原書 Ch5 參照出現 Exercise Y；你目前上傳的 Ch5 頁面僅列至 X。本站照印刷原文呈現，請以課本為準。"
   }
  ]
 };
