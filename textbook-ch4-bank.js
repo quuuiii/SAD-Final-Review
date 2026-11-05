@@ -1,6 +1,5 @@
-/* Source user-uploaded Structural Modeling textbook Ch5 pp.198–201, course Ch4.
- * Some cross-references in the printed book are self-referential; kept exactly as printed.
- * Diagrams require human review. */
+/* Source: user-uploaded textbook Ch5 Structural Modeling pp.198–201.
+ * Two full long-form minicases with their source subquestions. */
 window.SAD_TEXTBOOK_CH4={
  "chapter": 4,
  "textbookChapter": 5,
@@ -1200,6 +1199,104 @@ window.SAD_TEXTBOOK_CH4={
    "manual": true,
    "external": false,
    "sourcePage": 200
+  },
+  {
+   "num": "1",
+   "sourcePage": 200,
+   "prompt": "West Star Marinas is a chain of twelve marinas that offer lakeside service to boaters; service and repair of boats, motors, and marine equipment; and sales of boats, motors, and other marine accessories. The systems development project team at West Star Marinas has been hard at work on a project that eventually will link all the marina’s facilities into one unified, networked system.\n\nThe project team has developed a use-case diagram of the current system. This model has been carefully checked. Last week, the team invited a number of system users to role-play the various use cases, and the use cases were refined to the users’ satisfaction. Right now, the project manager feels confident that the as-is system has been adequately represented in the use-case diagram.\n\nThe director of operations for West Star is the sponsor of this project. He sat in on the role-playing of the use cases and was very pleased by the thorough job the team had done in developing the model. He made it clear to you, the project manager, that he was anxious to see your team begin work on the use cases for the to-be system. He was a little skeptical that it was necessary for your team to spend any time modeling the current system in the first place but grudgingly admitted that the team really seemed to understand the business after going through that work.\n\nThe methodology you are following, however, specifies that the team should now turn its attention to developing the structural models for the as-is system. When you stated this to the project sponsor, he seemed confused and a little irritated. “You are going to spend even more time looking at the current system? I thought we were done with that! Why is this necessary? I want to see some progress on the way things will work in the future!”\n\nWhat is your response to the director of operations? Why do we perform structural modeling? Is there any benefit to developing a structural model of the current system at all? How do the use cases and use-case diagram help us develop the structural model?",
+   "criteria": [
+    [
+     "as-is",
+     "現況"
+    ],
+    [
+     "use case",
+     "使用案例"
+    ],
+    [
+     "structural model",
+     "結構模型"
+    ],
+    [
+     "class",
+     "crc",
+     "類別",
+     "責任"
+    ],
+    [
+     "relationship",
+     "object",
+     "關係",
+     "物件"
+    ],
+    [
+     "to-be",
+     "未來"
+    ],
+    [
+     "verification",
+     "validation",
+     "驗證",
+     "確認"
+    ]
+   ],
+   "manual": true,
+   "id": "M1",
+   "type": "Minicases"
+  },
+  {
+   "num": "2",
+   "sourcePage": 201,
+   "prompt": "Holiday Travel Vehicles sells new recreational vehicles and travel trailers. When new vehicles arrive at Holiday Travel Vehicles, a new vehicle record is created. Included in the new vehicle record are a vehicle serial number, name, model, year, manufacturer, and base cost.\n\nWhen a customer arrives at Holiday Travel Vehicles, he or she works with a salesperson to negotiate a vehicle purchase. When a purchase has been agreed upon, a sales invoice is completed by the salesperson. The invoice summarizes the purchase, including full customer information, information on the trade-in vehicle (if any), the trade-in allowance, and information on the purchased vehicle. If the customer requests dealer-installed options, they are listed on the invoice as well. The invoice also summarizes the final negotiated price, plus any applicable taxes and license fees. The transaction concludes with a customer signature on the sales invoice.\n\na. Identify the classes described in the preceding scenario (you should find six). Create CRC cards for each class.\n\nCustomers are assigned a customer ID when they make their first purchase from Holiday Travel Vehicles. Name, address, and phone number are recorded for the customer. The trade-in vehicle is described by a serial number, make, model, and year. Dealer-installed options are described by an option code, description, and price.\n\nb. Develop a list of attributes for each class. Place the attributes onto the CRC cards.\n\nEach invoice lists just one customer. A person does not become a customer until he or she purchases a vehicle. Over time, a customer may purchase a number of vehicles from Holiday Travel Vehicles.\n\nEvery invoice must be filled out by only one salesperson. A new salesperson might not have sold any vehicles, but experienced salespeople have probably sold many vehicles.\n\nEach invoice only lists one new vehicle. If a new vehicle in inventory has not been sold, there will be no invoice for it. Once the vehicle sells, there will be just one invoice for it.\n\nA customer may decide to have no options added to the vehicle or may choose to add many options. An option may be listed on no invoices, or it may be listed on many invoices.\n\nA customer may trade in no more than one vehicle on a purchase of a new vehicle. The trade-in vehicle may be sold to another customer who later trades it in on another Holiday Travel vehicle.\n\nc. Based on the preceding business rules in force at Holiday Travel Vehicles and CRC cards, draw a class diagram and document the relationships with the appropriate multiplicities. Remember to update the CRC cards.",
+   "criteria": [
+    [
+     "vehicle",
+     "new vehicle",
+     "新車",
+     "車輛"
+    ],
+    [
+     "customer",
+     "顧客"
+    ],
+    [
+     "salesperson",
+     "銷售員",
+     "業務"
+    ],
+    [
+     "invoice",
+     "發票"
+    ],
+    [
+     "option",
+     "配備"
+    ],
+    [
+     "trade-in",
+     "舊車",
+     "換購"
+    ],
+    [
+     "crc",
+     "責任"
+    ],
+    [
+     "multiplicity",
+     "1..",
+     "0..",
+     "多重性"
+    ],
+    [
+     "association",
+     "relationship",
+     "關聯",
+     "關係"
+    ]
+   ],
+   "manual": true,
+   "id": "M2",
+   "type": "Minicases"
   }
  ]
 };
